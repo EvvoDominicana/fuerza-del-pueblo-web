@@ -1,18 +1,21 @@
-import type { SVGProps } from 'react';
-
-// Placeholder for a more elaborate SVG logo if available
-// For now, using a simple text representation or a generic icon
-const PpdLogoIcon = (props: SVGProps<SVGSVGElement>) => (
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" {...props}>
-    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-  </svg>
-);
-
+import Image from 'next/image';
 
 export function AppLogo({ collapsed }: { collapsed?: boolean }) {
   return (
     <div className="flex items-center gap-2 p-2 transition-all duration-300">
-      <PpdLogoIcon className="h-8 w-8 text-primary" />
+      {/*
+        Instrucciones para el usuario:
+        1. Coloca la imagen de tu logo (por ejemplo, 'partido-logo.png') en el directorio '/public'.
+        2. Si usas un nombre o ruta diferente, actualiza el atributo 'src' abajo.
+        3. Para el tamaño de 32x32px, se recomienda una versión del logo centrada en el icono.
+      */}
+      <Image
+        src="/partido-logo.png" // Esta ruta asume que la imagen está en 'public/partido-logo.png'
+        alt="Partido País Posible Logo"
+        width={32}
+        height={32}
+        className="object-contain" // Preserva la relación de aspecto de la imagen
+      />
       {!collapsed && (
         <span className="font-headline text-xl font-bold text-primary">
           PPD Conecta
