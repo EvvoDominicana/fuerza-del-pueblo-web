@@ -1,8 +1,12 @@
+
+'use client';
+
+import React, { useState } from 'react';
 import AppLayout from '@/components/layout/AppLayout';
 import { SidebarNav } from '@/components/navigation/SidebarNav';
 import { Card, CardHeader, CardTitle, CardContent, CardDescription, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Calendar } from '@/components/ui/calendar'; // Assuming basic calendar exists
+import { Calendar } from '@/components/ui/calendar';
 import Image from 'next/image';
 import { MapPin, CalendarIcon, Users, CheckCircle } from 'lucide-react';
 
@@ -43,7 +47,7 @@ const events = [
 ];
 
 export default function EventsPage() {
-  const [selectedDate, setSelectedDate] = React.useState<Date | undefined>(new Date());
+  const [selectedDate, setSelectedDate] = useState<Date | undefined>(new Date());
 
   return (
     <AppLayout>
