@@ -31,10 +31,10 @@ export default function DashboardPage() {
           </CardHeader>
           <CardContent className="flex flex-col md:flex-row gap-4 items-center">
             <Image 
-              src="https://placehold.co/600x400.png" 
+              src="https://placehold.co/120x120.png" 
               alt="Milton Morrison" 
-              width={200} 
-              height={133} 
+              width={120} 
+              height={120} 
               className="rounded-lg object-cover"
               data-ai-hint="politician portrait" 
             />
