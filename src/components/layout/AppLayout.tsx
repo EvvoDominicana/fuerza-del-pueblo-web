@@ -1,3 +1,4 @@
+
 'use client';
 
 import type React from 'react';
@@ -38,12 +39,12 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
           {/* SidebarNav will be a child of AppLayout where it's used */}
         </SidebarContent>
         <SidebarFooter>
-          <Link href="/profile" passHref legacyBehavior>
-            <Button variant="ghost" className="w-full justify-start gap-2">
+          <Button asChild variant="ghost" className="w-full justify-start gap-2">
+            <Link href="/profile">
               <UserCircle2 className="h-5 w-5" />
               <span className="group-data-[collapsible=icon]:hidden">Mi Cuenta</span>
-            </Button>
-          </Link>
+            </Link>
+          </Button>
           <Button variant="ghost" className="w-full justify-start gap-2 text-destructive hover:text-destructive-foreground hover:bg-destructive">
             <LogOut className="h-5 w-5" />
             <span className="group-data-[collapsible=icon]:hidden">Cerrar Sesión</span>
