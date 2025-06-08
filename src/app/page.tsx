@@ -20,36 +20,11 @@ export default function DashboardPage() {
     <AppLayout>
       <SidebarNav />
       <div className="mb-6">
-        <h1 className="text-3xl font-bold font-headline text-primary">Bienvenido a PPD Conecta</h1>
+        <h1 className="text-3xl font-bold font-headline text-primary">Bienvenido a País Posible Conecta</h1>
         <p className="text-muted-foreground">Tu plataforma para la participación y organización política.</p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <Card className="lg:col-span-2">
-          <CardHeader>
-            <CardTitle className="font-headline">Anuncio Importante</CardTitle>
-          </CardHeader>
-          <CardContent className="flex flex-col md:flex-row gap-4 items-center">
-            <Image 
-              src="https://placehold.co/120x120.png" 
-              alt="Milton Morrison" 
-              width={120} 
-              height={120} 
-              className="rounded-lg object-cover"
-              data-ai-hint="politician portrait" 
-            />
-            <div>
-              <h3 className="text-lg font-semibold mb-2">Mensaje de Milton Morrison, Presidente</h3>
-              <p className="text-sm text-muted-foreground mb-3">
-                "Unidos somos más fuertes. Esta plataforma es una herramienta para conectar, organizar y construir el país que todos soñamos. ¡Participa activamente!"
-              </p>
-              <Button asChild variant="default">
-                <Link href="/president-message">Leer más</Link>
-              </Button>
-            </div>
-          </CardContent>
-        </Card>
-
         {dashboardItems.map((item) => (
           <Card key={item.title} className="flex flex-col">
             <CardHeader className="flex-row items-center gap-3 space-y-0 pb-2">

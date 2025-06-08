@@ -3,7 +3,7 @@ import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
-  title: 'PPD Conecta',
+  title: 'País Posible Conecta',
   description: 'Plataforma oficial del Partido País Posible',
 };
 
