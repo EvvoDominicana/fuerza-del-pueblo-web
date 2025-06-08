@@ -6,8 +6,8 @@ export function AppLogo({ collapsed }: { collapsed?: boolean }) {
       <Image
         src="/partido-logo.png"
         alt="País Posible Logo"
-        width={48}
-        height={48}
+        width={56}
+        height={56}
         className="object-contain"
       />
       {!collapsed && (

@@ -14,36 +14,41 @@ body {
     --card-foreground: 215 25% 27%;
     --popover: 0 0% 100%;
     --popover-foreground: 215 25% 27%;
-    --primary: 217 71% 53%; /* Blue from "P" and "PAÍS POSIBLE" text */
+    
+    --primary: 217 80% 55%; /* More vivid Blue from logo */
     --primary-foreground: 0 0% 100%; /* White for text on primary */
-    --secondary: 93 53% 54%; /* Green from logo */
-    --secondary-foreground: 93 50% 15%; /* Dark green for text on secondary */
+    
+    --secondary: 120 60% 45%; /* More standard, darker Green from logo */
+    --secondary-foreground: 120 60% 95%; /* Very light text for dark green */
+    
     --muted: 210 40% 90%; /* Light gray for muted elements */
     --muted-foreground: 215 20% 50%; /* Medium gray for muted text */
-    --accent: 217 71% 53%; /* Using primary blue as accent for consistency */
-    --accent-foreground: 0 0% 100%; /* White for text on accent */
+    
+    --accent: 120 60% 45%; /* Using secondary Green as accent */
+    --accent-foreground: 120 60% 95%; /* Very light text for accent green */
+    
     --destructive: 0 84.2% 60.2%; /* Standard destructive red */
     --destructive-foreground: 0 0% 98%;
     --border: 210 40% 85%; /* Light gray border */
     --input: 210 40% 92%; /* Slightly off-white for input backgrounds */
-    --ring: 217 71% 53%; /* Ring color same as primary blue */
+    --ring: 217 80% 55%; /* Ring color same as primary blue */
     
-    --chart-1: 217 71% 53%; /* Primary Blue */
-    --chart-2: 93 53% 54%;  /* Secondary Green */
+    --chart-1: 217 80% 55%; /* Primary Blue */
+    --chart-2: 120 60% 45%;  /* Secondary Green */
     --chart-3: 197 100% 47%; /* Teal from logo swoosh */
     --chart-4: 43 74% 66%;  /* Yellow for contrast */
-    --chart-5: 358 72% 60%; /* Red from logo swoosh (slightly lighter for charts) */
+    --chart-5: 358 72% 60%; /* Red from logo swoosh */
     --radius: 0.5rem;
 
     /* Sidebar specific colors aligned with the new theme */
-    --sidebar-background: 0 0% 100%; /* White */
+    --sidebar-background: 217 70% 97%; /* Very light blue */
     --sidebar-foreground: 215 25% 27%; /* Dark cool gray text */
-    --sidebar-primary: 217 71% 53%; /* Primary blue for active items */
-    --sidebar-primary-foreground: 0 0% 100%; /* White text on primary */
-    --sidebar-accent: 210 40% 94%; /* Very light gray for hover on non-active */
-    --sidebar-accent-foreground: 217 71% 53%; /* Blue text on hover */
+    --sidebar-primary: var(--primary); /* Primary blue for active items */
+    --sidebar-primary-foreground: var(--primary-foreground); /* White text on primary */
+    --sidebar-accent: var(--accent); /* Accent green for hover on non-active */
+    --sidebar-accent-foreground: var(--accent-foreground); /* Light text on accent green hover */
     --sidebar-border: 210 40% 88%; /* Border color */
-    --sidebar-ring: 217 71% 53%; /* Ring color */
+    --sidebar-ring: var(--ring); /* Ring color */
   }
 
   .dark {
@@ -53,35 +58,40 @@ body {
     --card-foreground: 210 40% 96%;
     --popover: 215 28% 14%;
     --popover-foreground: 210 40% 96%;
-    --primary: 217 71% 65%; /* Lighter blue for dark mode */
+
+    --primary: 217 80% 65%; /* Lighter vivid blue for dark mode */
     --primary-foreground: 215 25% 15%; /* Very dark blue/gray */
-    --secondary: 93 53% 45%; /* Darker green */
-    --secondary-foreground: 93 30% 90%; /* Light green */
+
+    --secondary: 120 50% 55%; /* Lighter green for dark mode */
+    --secondary-foreground: 120 30% 15%; /* Darker green text for light green bg */
+    
     --muted: 215 28% 25%;
     --muted-foreground: 210 40% 70%;
-    --accent: 217 71% 65%; /* Lighter blue for accent */
-    --accent-foreground: 0 0% 100%; /* White text on accent */
+
+    --accent: 120 50% 55%; /* Lighter green for accent */
+    --accent-foreground: 120 30% 15%; /* Darker green text for accent */
+    
     --destructive: 0 70% 50%;
     --destructive-foreground: 0 0% 100%;
     --border: 215 28% 30%;
     --input: 215 28% 22%;
-    --ring: 217 71% 65%; /* Lighter blue for ring */
+    --ring: 217 80% 65%; /* Lighter vivid blue for ring */
 
-    --chart-1: 217 71% 65%;
-    --chart-2: 93 53% 45%;
+    --chart-1: 217 80% 65%;
+    --chart-2: 120 50% 55%;
     --chart-3: 197 100% 55%;
     --chart-4: 43 74% 50%;
     --chart-5: 358 72% 50%;
 
     /* Sidebar specific colors for dark mode */
-    --sidebar-background: 215 28% 12%; /* Very dark blue/gray */
+    --sidebar-background: 217 30% 15%; /* Darker blue-gray for sidebar */
     --sidebar-foreground: 210 40% 96%;
-    --sidebar-primary: 217 71% 65%; /* Lighter blue for active items */
-    --sidebar-primary-foreground: 0 0% 100%; /* White text on primary */
-    --sidebar-accent: 215 28% 20%; /* Darker accent for hover */
-    --sidebar-accent-foreground: 210 40% 96%; /* Light text on hover */
+    --sidebar-primary: var(--primary); 
+    --sidebar-primary-foreground: var(--primary-foreground);
+    --sidebar-accent: var(--accent);
+    --sidebar-accent-foreground: var(--accent-foreground);
     --sidebar-border: 215 28% 25%;
-    --sidebar-ring: 217 71% 65%;
+    --sidebar-ring: var(--ring);
   }
 }
 
