@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Newspaper, CalendarDays, ListChecks, Trophy, GraduationCap, MessageCircle, type LucideIcon } from 'lucide-react';
 import Link from 'next/link';
+import { cn } from '@/lib/utils';
 
 interface DashboardItem {
   title: string;
@@ -62,19 +63,29 @@ export default function DashboardPage() {
     <AppLayout>
       <SidebarNav />
       <div className="mb-6">
-        <h1 className="text-3xl font-bold font-headline text-primary">Bienvenido a País Posible Conecta</h1>
+        <h1 className="text-3xl font-bold font-headline text-[hsl(var(--foreground))]">Bienvenido a País Posible Conecta</h1>
         <p className="text-muted-foreground">Tu plataforma para la participación y organización política.</p>
       </div>
 
       <Tabs defaultValue={categorizedItems[0]?.value || 'principal'} className="w-full">
-        <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 mb-4">
+        <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 mb-4 bg-transparent p-0">
           {categorizedItems.map((category) => (
-            <TabsTrigger key={category.value} value={category.value}>{category.category}</TabsTrigger>
+            <TabsTrigger 
+              key={category.value} 
+              value={category.value}
+              className={cn(
+                "text-primary-foreground rounded-t-md data-[state=active]:shadow-sm",
+                "data-[state=active]:bg-primary",
+                "data-[state=inactive]:bg-[hsl(var(--primary-darker))]"
+              )}
+            >
+              {category.category}
+            </TabsTrigger>
           ))}
         </TabsList>
 
         {categorizedItems.map((category) => (
-          <TabsContent key={category.value} value={category.value}>
+          <TabsContent key={category.value} value={category.value} className="mt-0 pt-6 bg-card rounded-b-md shadow">
             {category.items.length > 0 ? (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {category.items.map((item) => (
