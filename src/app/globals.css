@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -38,9 +39,9 @@ body {
     --input: 220 20% 94%; /* Fondo de input ligeramente off-white */
     --ring: 212 85% 50%; /* Color de ring similar al primario */
     
-    --chart-1: var(--primary);
-    --chart-2: var(--secondary);
-    --chart-3: var(--accent);
+    --chart-1: hsl(var(--primary));
+    --chart-2: hsl(var(--secondary));
+    --chart-3: hsl(var(--accent));
     --chart-4: 350 70% 55%;  /* Rojo del logo */
     --chart-5: 195 85% 50%; /* Celeste/Cyan del logo */
     --radius: 0.5rem;
@@ -53,7 +54,7 @@ body {
     --sidebar-accent: 220 20% 95%; /* Hover bg: gris muy claro */
     --sidebar-accent-foreground: 215 50% 25%; /* Hover text: azul oscuro */
     --sidebar-border: 220 20% 88%;
-    --sidebar-ring: var(--ring);
+    --sidebar-ring: hsl(var(--ring));
   }
 
   .dark {
@@ -87,20 +88,20 @@ body {
     --input: 215 30% 22%;
     --ring: 212 75% 60%;
 
-    --chart-1: var(--primary);
-    --chart-2: var(--secondary);
-    --chart-3: var(--accent);
+    --chart-1: hsl(var(--primary));
+    --chart-2: hsl(var(--secondary));
+    --chart-3: hsl(var(--accent));
     --chart-4: 350 60% 65%; 
     --chart-5: 195 75% 60%;
 
     --sidebar-background: 215 30% 15%;
     --sidebar-foreground: 210 25% 80%;
     --sidebar-primary: hsl(var(--secondary)); 
-    --sidebar-primary-foreground: hsl(var(--secondary-foreground));
+    --sidebar-primary-foreground: hsl(var(--secondary-foreground)); /* Debería ser oscuro aquí también */
     --sidebar-accent: 215 30% 25%;
     --sidebar-accent-foreground: 210 25% 90%;
     --sidebar-border: 215 30% 28%;
-    --sidebar-ring: var(--ring);
+    --sidebar-ring: hsl(var(--ring));
   }
 }
 
