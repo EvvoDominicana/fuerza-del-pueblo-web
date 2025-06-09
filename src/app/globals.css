@@ -28,8 +28,8 @@ body {
     --muted: 220 20% 90%; /* Gris claro para elementos muted */
     --muted-foreground: 220 25% 55%; /* Gris medio/azul para texto muted */
     
-    --accent: 195 85% 50%; /* Celeste del logo como acento */
-    --accent-foreground: 215 50% 15%; /* Azul muy oscuro para texto sobre acento celeste */
+    --accent: 40 90% 60%; /* Amarillo/Naranja del eslogan del logo */
+    --accent-foreground: 215 50% 15%; /* Azul muy oscuro para texto sobre acento amarillo/naranja */
     
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
@@ -42,7 +42,7 @@ body {
     --chart-2: var(--secondary);
     --chart-3: var(--accent);
     --chart-4: 350 70% 55%;  /* Rojo del logo */
-    --chart-5: 40 90% 60%; /* Naranja/Amarillo del logo (si aplica) */
+    --chart-5: 195 85% 50%; /* Celeste/Cyan del logo */
     --radius: 0.5rem;
 
     /* Colores específicos para la Sidebar, usando la paleta del logo */
@@ -77,7 +77,7 @@ body {
     --muted: 215 30% 25%;
     --muted-foreground: 210 25% 70%;
     
-    --accent: 195 75% 60%; /* Celeste del logo, más brillante */
+    --accent: 40 80% 65%; /* Amarillo/Naranja, más brillante */
     --accent-foreground: 215 50% 10%;
     
     --destructive: 0 70% 50%;
@@ -91,7 +91,7 @@ body {
     --chart-2: var(--secondary);
     --chart-3: var(--accent);
     --chart-4: 350 60% 65%; 
-    --chart-5: 40 80% 65%;
+    --chart-5: 195 75% 60%;
 
     --sidebar-background: 215 30% 15%;
     --sidebar-foreground: 210 25% 80%;
