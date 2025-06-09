@@ -8,98 +8,98 @@ body {
 
 @layer base {
   :root {
-    /* Based on the target image */
-    --background: 220 20% 97%; /* Very light gray, almost white for page background */
-    --foreground: 220 40% 25%; /* Dark blue/navy for general text */
+    /* Paleta basada en el logo de País Posible */
+    --background: 220 20% 97%; /* Gris muy claro, casi blanco */
+    --foreground: 215 50% 25%; /* Azul oscuro del logo para texto general */
     
-    --card: 0 0% 100%; /* White for cards */
-    --card-foreground: 220 40% 25%; /* Dark blue/navy text on cards */
+    --card: 0 0% 100%; /* Blanco para cards */
+    --card-foreground: 215 50% 25%; /* Azul oscuro del logo para texto en cards */
     
     --popover: 0 0% 100%;
-    --popover-foreground: 220 40% 25%;
+    --popover-foreground: 215 50% 25%;
     
-    --primary: 217 80% 50%; /* Strong blue for buttons, active tabs */
-    --primary-foreground: 0 0% 100%; /* White text on primary elements */
-    --primary-darker: 220 70% 40%; /* Darker blue for inactive tabs */
+    --primary: 212 85% 45%; /* Azul principal del logo (similar al de "PAÍS POSIBLE") */
+    --primary-foreground: 0 0% 100%; /* Blanco para texto sobre primario */
+    --primary-darker: 212 70% 35%; /* Un azul más oscuro para pestañas inactivas, etc. */
     
-    --secondary: 210 100% 92%; /* Light blue for active sidebar item background */
-    --secondary-foreground: 217 80% 45%; /* Dark blue for active sidebar item text */
+    --secondary: 100 60% 45%; /* Verde del logo */
+    --secondary-foreground: 0 0% 100%; /* Blanco sobre verde */
     
-    --muted: 220 20% 90%; /* Light gray for muted elements */
-    --muted-foreground: 220 25% 55%; /* Medium gray/blue for muted text */
+    --muted: 220 20% 90%; /* Gris claro para elementos muted */
+    --muted-foreground: 220 25% 55%; /* Gris medio/azul para texto muted */
     
-    --accent: 217 80% 50%; /* Using primary blue as accent */
-    --accent-foreground: 0 0% 100%; /* White text on accent */
+    --accent: 195 85% 50%; /* Celeste del logo como acento */
+    --accent-foreground: 215 50% 15%; /* Azul muy oscuro para texto sobre acento celeste */
     
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
     
-    --border: 220 20% 88%; /* Light gray border */
-    --input: 220 20% 94%; /* Slightly off-white for input backgrounds */
-    --ring: 217 80% 55%; /* Ring color similar to primary blue */
+    --border: 220 20% 88%; /* Borde gris claro */
+    --input: 220 20% 94%; /* Fondo de input ligeramente off-white */
+    --ring: 212 85% 50%; /* Color de ring similar al primario */
     
-    --chart-1: 217 80% 50%; /* Primary Blue */
-    --chart-2: 120 60% 45%;  /* A contrasting Green (can be adjusted) */
-    --chart-3: 197 100% 47%; /* A Teal (can be adjusted) */
-    --chart-4: 43 74% 66%;  /* A Yellow (can be adjusted) */
-    --chart-5: 358 72% 60%; /* A Red (can be adjusted) */
+    --chart-1: var(--primary);
+    --chart-2: var(--secondary);
+    --chart-3: var(--accent);
+    --chart-4: 350 70% 55%;  /* Rojo del logo */
+    --chart-5: 40 90% 60%; /* Naranja/Amarillo del logo (si aplica) */
     --radius: 0.5rem;
 
-    /* Sidebar specific colors based on the target image */
-    --sidebar-background: 0 0% 100%; /* White sidebar background */
-    --sidebar-foreground: 220 30% 40%; /* Dark gray/blue text for inactive items */
-    --sidebar-primary: var(--secondary); /* Light blue background for active item (using secondary) */
-    --sidebar-primary-foreground: var(--secondary-foreground); /* Dark blue text for active item (using secondary-foreground) */
-    --sidebar-accent: 220 20% 95%; /* Hover bg for sidebar items: slightly darker than sidebar-background */
-    --sidebar-accent-foreground: 220 40% 25%; /* Hover text for sidebar items: dark blue/navy */
-    --sidebar-border: 220 20% 88%; /* Border color for sidebar (e.g., right edge) */
+    /* Colores específicos para la Sidebar, usando la paleta del logo */
+    --sidebar-background: 0 0% 100%; /* Fondo blanco para la sidebar */
+    --sidebar-foreground: 215 50% 35%; /* Texto azul oscuro para ítems inactivos */
+    --sidebar-primary: hsl(var(--secondary)); /* Verde del logo para el fondo del ítem activo */
+    --sidebar-primary-foreground: hsl(var(--secondary-foreground)); /* Texto blanco sobre el fondo verde activo */
+    --sidebar-accent: 220 20% 95%; /* Hover bg: gris muy claro */
+    --sidebar-accent-foreground: 215 50% 25%; /* Hover text: azul oscuro */
+    --sidebar-border: 220 20% 88%;
     --sidebar-ring: var(--ring);
   }
 
   .dark {
-    /* Dark theme based on the new palette - adjust as needed */
-    --background: 220 20% 10%; 
-    --foreground: 220 20% 90%; 
+    /* Paleta oscura basada en el logo */
+    --background: 215 30% 12%; 
+    --foreground: 210 25% 88%; 
     
-    --card: 220 20% 15%; 
-    --card-foreground: 220 20% 90%;
+    --card: 215 30% 18%; 
+    --card-foreground: 210 25% 88%;
     
-    --popover: 220 20% 15%;
-    --popover-foreground: 220 20% 90%;
+    --popover: 215 30% 15%;
+    --popover-foreground: 210 25% 88%;
     
-    --primary: 217 70% 60%; 
+    --primary: 212 75% 55%; /* Azul primario del logo, más brillante para dark mode */
     --primary-foreground: 0 0% 100%;
-    --primary-darker: 220 60% 50%;
+    --primary-darker: 212 65% 45%;
 
-    --secondary: 210 70% 30%; 
-    --secondary-foreground: 210 70% 85%;
+    --secondary: 100 50% 55%; /* Verde del logo, más brillante */
+    --secondary-foreground: 215 50% 10%; /* Texto oscuro sobre verde brillante */
     
-    --muted: 220 20% 25%;
-    --muted-foreground: 220 20% 65%;
+    --muted: 215 30% 25%;
+    --muted-foreground: 210 25% 70%;
     
-    --accent: 217 70% 60%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 195 75% 60%; /* Celeste del logo, más brillante */
+    --accent-foreground: 215 50% 10%;
     
     --destructive: 0 70% 50%;
     --destructive-foreground: 0 0% 100%;
     
-    --border: 220 20% 30%;
-    --input: 220 20% 20%;
-    --ring: 217 70% 65%;
+    --border: 215 30% 30%;
+    --input: 215 30% 22%;
+    --ring: 212 75% 60%;
 
-    --chart-1: 217 70% 60%;
-    --chart-2: 120 50% 55%;
-    --chart-3: 197 90% 55%;
-    --chart-4: 43 70% 50%;
-    --chart-5: 358 70% 50%;
+    --chart-1: var(--primary);
+    --chart-2: var(--secondary);
+    --chart-3: var(--accent);
+    --chart-4: 350 60% 65%; 
+    --chart-5: 40 80% 65%;
 
-    --sidebar-background: 220 20% 12%;
-    --sidebar-foreground: 220 20% 80%;
-    --sidebar-primary: var(--secondary); 
-    --sidebar-primary-foreground: var(--secondary-foreground);
-    --sidebar-accent: 220 20% 20%;
-    --sidebar-accent-foreground: 220 20% 90%;
-    --sidebar-border: 220 20% 25%;
+    --sidebar-background: 215 30% 15%;
+    --sidebar-foreground: 210 25% 80%;
+    --sidebar-primary: hsl(var(--secondary)); 
+    --sidebar-primary-foreground: hsl(var(--secondary-foreground));
+    --sidebar-accent: 215 30% 25%;
+    --sidebar-accent-foreground: 210 25% 90%;
+    --sidebar-border: 215 30% 28%;
     --sidebar-ring: var(--ring);
   }
 }
