@@ -32,7 +32,7 @@ export default function GamificationPage() {
       <div className="space-y-6">
         <h1 className="text-3xl font-bold font-headline">Mis Reconocimientos y Puntos</h1>
 
-        <Card>
+        <Card className="shadow-lg">
           <CardHeader>
             <CardTitle className="font-headline">Mi Progreso</CardTitle>
           </CardHeader>
@@ -48,7 +48,7 @@ export default function GamificationPage() {
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="shadow-lg">
           <CardHeader>
             <CardTitle className="font-headline">Mis Insignias</CardTitle>
             <CardDescription>Reconocimientos obtenidos por tu participación y compromiso.</CardDescription>
@@ -65,7 +65,7 @@ export default function GamificationPage() {
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="shadow-lg">
           <CardHeader>
             <CardTitle className="font-headline">Tabla de Clasificación (Top 5 General)</CardTitle>
             <CardDescription>Mira cómo te comparas con otros militantes destacados.</CardDescription>

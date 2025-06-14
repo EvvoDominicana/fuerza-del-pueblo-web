@@ -56,7 +56,7 @@ export default function EventsPage() {
         <h1 className="text-3xl font-bold font-headline">Calendario de Eventos</h1>
         
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <Card className="lg:col-span-1">
+          <Card className="lg:col-span-1 shadow-lg">
             <CardHeader>
               <CardTitle className="font-headline">Selecciona una Fecha</CardTitle>
             </CardHeader>

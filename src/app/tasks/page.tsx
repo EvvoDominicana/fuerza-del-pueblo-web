@@ -35,7 +35,7 @@ export default function TasksPage() {
       <div className="space-y-6">
         <h1 className="text-3xl font-bold font-headline">Mis Tareas de Movilización</h1>
         
-        <Card>
+        <Card className="shadow-lg">
           <CardHeader>
             <CardTitle className="font-headline">Lista de Tareas Asignadas</CardTitle>
             <CardDescription>Completa tus tareas para ganar puntos y contribuir al partido.</CardDescription>

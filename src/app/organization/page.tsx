@@ -76,7 +76,7 @@ export default function OrganizationPage() {
       <div className="space-y-6">
         <h1 className="text-3xl font-bold font-headline">Estructura y Organización Interna</h1>
         
-        <Card>
+        <Card className="shadow-lg">
           <CardHeader>
             <CardTitle className="font-headline">Mapa de Estructuras del Partido</CardTitle>
             <CardDescription>Navega la jerarquía y geografía de las estructuras del Partido País Posible.</CardDescription>
@@ -90,7 +90,7 @@ export default function OrganizationPage() {
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="shadow-lg">
           <CardHeader>
             <CardTitle className="font-headline">Directorio de Contactos</CardTitle>
             <CardDescription>Información de contacto de los líderes de estructura.</CardDescription>
