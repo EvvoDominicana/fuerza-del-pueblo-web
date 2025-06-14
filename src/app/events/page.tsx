@@ -56,7 +56,7 @@ export default function EventsPage() {
         <h1 className="text-3xl font-bold font-headline">Calendario de Eventos</h1>
         
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <Card className="lg:col-span-1 shadow-lg">
+          <Card className="lg:col-span-1 shadow-green-lg">
             <CardHeader>
               <CardTitle className="font-headline">Selecciona una Fecha</CardTitle>
             </CardHeader>
@@ -73,7 +73,7 @@ export default function EventsPage() {
           <div className="lg:col-span-2 space-y-6">
             <h2 className="text-2xl font-semibold font-headline">Próximos Eventos</h2>
             {events.map(event => (
-              <Card key={event.id} className="overflow-hidden shadow-lg">
+              <Card key={event.id} className="overflow-hidden shadow-green-lg">
                 <div className="md:flex">
                   <div className="md:w-1/3">
                     <Image 

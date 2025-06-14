@@ -85,7 +85,7 @@ export default function DashboardPage() {
         </TabsList>
 
         {categorizedItems.map((category) => (
-          <TabsContent key={category.value} value={category.value} className="mt-0 pt-6 bg-card rounded-b-md shadow">
+          <TabsContent key={category.value} value={category.value} className="mt-0 pt-6 bg-card rounded-b-md shadow-green">
             {category.items.length > 0 ? (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {category.items.map((item) => (

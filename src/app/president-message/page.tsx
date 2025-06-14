@@ -29,7 +29,7 @@ export default function PresidentMessagePage() {
     <AppLayout>
       <SidebarNav />
       <div className="space-y-6">
-        <Card className="shadow-xl">
+        <Card className="shadow-green-xl">
           <CardContent className="p-6 flex flex-col md:flex-row items-center gap-6 bg-gradient-to-r from-primary via-blue-600 to-purple-600 text-primary-foreground rounded-lg">
             <Avatar className="h-32 w-32 border-4 border-white shadow-lg">
               <AvatarImage src="https://placehold.co/200x200.png" alt="Milton Morrison" data-ai-hint="politician leader" />
@@ -51,7 +51,7 @@ export default function PresidentMessagePage() {
           </CardHeader>
           <CardContent className="space-y-4">
             {messages.map(msg => (
-              <Card key={msg.id} className="hover:shadow-md transition-shadow">
+              <Card key={msg.id} className="hover:shadow-green-md transition-shadow">
                 <CardContent className="p-4 flex gap-4 items-start">
                   {msg.type === 'video' && msg.thumbnailUrl && (
                     <div className="relative w-32 h-20 flex-shrink-0">

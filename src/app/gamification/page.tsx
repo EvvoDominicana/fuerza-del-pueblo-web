@@ -32,7 +32,7 @@ export default function GamificationPage() {
       <div className="space-y-6">
         <h1 className="text-3xl font-bold font-headline">Mis Reconocimientos y Puntos</h1>
 
-        <Card className="shadow-lg">
+        <Card className="shadow-green-lg">
           <CardHeader>
             <CardTitle className="font-headline">Mi Progreso</CardTitle>
           </CardHeader>
@@ -48,14 +48,14 @@ export default function GamificationPage() {
           </CardContent>
         </Card>
 
-        <Card className="shadow-lg">
+        <Card className="shadow-green-lg">
           <CardHeader>
             <CardTitle className="font-headline">Mis Insignias</CardTitle>
             <CardDescription>Reconocimientos obtenidos por tu participación y compromiso.</CardDescription>
           </CardHeader>
           <CardContent className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
             {badges.map(badge => (
-              <div key={badge.name} className="flex flex-col items-center p-4 border rounded-lg bg-card hover:shadow-md transition-shadow">
+              <div key={badge.name} className="flex flex-col items-center p-4 border rounded-lg bg-card hover:shadow-green-md transition-shadow">
                 <div className={`p-3 rounded-full ${badge.color} mb-2`}>
                   <badge.icon className="h-6 w-6 text-white" />
                 </div>
@@ -65,7 +65,7 @@ export default function GamificationPage() {
           </CardContent>
         </Card>
 
-        <Card className="shadow-lg">
+        <Card className="shadow-green-lg">
           <CardHeader>
             <CardTitle className="font-headline">Tabla de Clasificación (Top 5 General)</CardTitle>
             <CardDescription>Mira cómo te comparas con otros militantes destacados.</CardDescription>

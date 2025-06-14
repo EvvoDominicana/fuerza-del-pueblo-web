@@ -22,7 +22,7 @@ export default function ProfilePage() {
           </Button>
         </div>
 
-        <Card className="shadow-lg">
+        <Card className="shadow-green-lg">
           <CardHeader>
             <div className="flex items-center gap-4">
               <Avatar className="h-20 w-20">
