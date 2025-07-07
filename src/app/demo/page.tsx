@@ -11,11 +11,12 @@ export default function DemoPage() {
   const goToDashboard = () => {
     // Simular login para demo
     if (typeof window !== 'undefined') {
-      localStorage.setItem('demo-logged-in', 'true');
-      localStorage.setItem('demo-user', JSON.stringify({
+      localStorage.setItem('mock-user', JSON.stringify({
+        uid: 'admin-demo-uid',
         email: 'admin@paisposible.com',
         displayName: 'Administrador General',
-        role: 'admin'
+        role: 'admin',
+        createdAt: new Date(),
       }));
     }
     router.push('/dashboard');
@@ -23,46 +24,40 @@ export default function DemoPage() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-green-50 to-blue-50 p-4">
-      <Card className="w-full max-w-md">
+      <Card className="w-full max-w-md shadow-green-lg">
         <CardHeader className="text-center">
           <div className="flex justify-center mb-4">
             <AppLogo collapsed={false} />
           </div>
-          <CardTitle className="text-2xl font-bold text-gray-900">
-            Acceso Demo
+          <CardTitle className="text-2xl font-bold font-headline">
+            Página de Acceso para Demo
           </CardTitle>
           <CardDescription>
-            Acceso directo para presentación
+            Usa esta página para tu presentación.
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="p-4 bg-green-50 border border-green-200 rounded-lg text-center">
-            <p className="text-lg font-bold text-green-800 mb-2">🎯 Demo Lista</p>
+            <p className="text-lg font-bold text-green-800 mb-2">🎯 Acceso Total de Admin</p>
             <p className="text-sm text-green-700 mb-4">
-              Como administrador tienes acceso total a todas las funcionalidades
+              Haz clic abajo para entrar directamente a la plataforma con todos los privilegios.
             </p>
             <Button 
-              className="w-full bg-green-600 hover:bg-green-700 text-white"
+              className="w-full bg-green-600 hover:bg-green-700 text-white h-12 text-lg"
               onClick={goToDashboard}
             >
               🚀 Entrar como Administrador
             </Button>
           </div>
 
-          <div className="space-y-2">
+          <div className="space-y-2 pt-4 border-t">
             <Button 
               variant="outline" 
               className="w-full"
               onClick={() => router.push('/login')}
             >
-              🔑 Ir a Login Normal
+              Ir a la Página de Login Normal
             </Button>
-          </div>
-
-          <div className="text-center text-xs text-gray-500">
-            <p>Credenciales para login manual:</p>
-            <p className="font-mono">admin@paisposible.com</p>
-            <p className="font-mono">AdminTotal2024!</p>
           </div>
         </CardContent>
       </Card>

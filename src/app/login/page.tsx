@@ -32,23 +32,25 @@ export default function LoginPage() {
       setLoading(false);
     }
   };
-
-  const handleAdminLogin = async () => {
+  
+  const handleAdminAutocomplete = () => {
     setEmail('admin@paisposible.com');
     setPassword('AdminTotal2024!');
-    setError('');
-    setLoading(true);
+  };
 
-    try {
-      // Simular delay y login automático para demo
-      await new Promise(resolve => setTimeout(resolve, 500));
-      await login('admin@paisposible.com', 'AdminTotal2024!');
-      router.push('/dashboard');
-    } catch (err: any) {
-      setError('Error al iniciar sesión. Verifica tus credenciales.');
-    } finally {
-      setLoading(false);
+  const handleDirectDashboardAccess = () => {
+    setLoading(true);
+    // Simular login para demo
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('mock-user', JSON.stringify({
+        uid: 'admin-demo-uid',
+        email: 'admin@paisposible.com',
+        displayName: 'Administrador General',
+        role: 'admin',
+        createdAt: new Date(),
+      }));
     }
+    router.push('/dashboard');
   };
 
   return (
@@ -109,22 +111,25 @@ export default function LoginPage() {
             <Button 
               variant="outline" 
               className="w-full"
-              onClick={handleAdminLogin}
+              onClick={handleAdminAutocomplete}
               disabled={loading}
             >
-              {loading ? 'Accediendo...' : '🔑 Acceso Administrador'}
+              🔑 Acceso Administrador (Autocompletar)
             </Button>
             <p className="text-xs text-gray-500 mt-2 text-center">
               Hace clic para usar las credenciales de administrador
             </p>
           </div>
 
-          <div className="mt-4 p-3 bg-green-50 border border-green-200 rounded-lg">
-            <p className="text-sm text-green-800 font-medium">Demo Listo ✅</p>
-            <p className="text-xs text-green-600 mt-1">
-              Email: admin@paisposible.com<br/>
-              Contraseña: AdminTotal2024!
-            </p>
+          <div className="mt-4 p-3 bg-green-50 border border-green-200 rounded-lg text-center">
+            <p className="text-sm text-green-800 font-medium mb-2">Demo Listo ✅</p>
+             <Button 
+              className="w-full bg-green-600 hover:bg-green-700 text-white"
+              onClick={handleDirectDashboardAccess}
+              disabled={loading}
+            >
+              {loading ? 'Accediendo...' : '🚀 Ir Directo al Dashboard'}
+            </Button>
           </div>
         </CardContent>
       </Card>
