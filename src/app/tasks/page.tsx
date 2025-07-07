@@ -35,14 +35,14 @@ export default function TasksPage() {
       <div className="space-y-6">
         <h1 className="text-3xl font-bold font-headline">Mis Tareas de Movilización</h1>
         
-        <Card className="shadow-green-lg">
+        <Card className="shadow-lg">
           <CardHeader>
             <CardTitle className="font-headline">Lista de Tareas Asignadas</CardTitle>
             <CardDescription>Completa tus tareas para ganar puntos y contribuir al partido.</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             {tasks.map(task => (
-              <Card key={task.id} className="p-4 hover:shadow-green-md transition-shadow">
+              <Card key={task.id} className="p-4 hover:shadow-md transition-shadow">
                 <div className="flex items-start gap-4">
                   <Checkbox id={`task-${task.id}`} checked={task.status === 'completed'} aria-label={`Marcar tarea ${task.title} como completada`} className="mt-1"/>
                   <div className="flex-1">

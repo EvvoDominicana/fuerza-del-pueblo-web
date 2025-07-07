@@ -58,7 +58,7 @@ export default function TrainingPage() {
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {trainingModules.map(module => (
-            <Card key={module.id} className="flex flex-col overflow-hidden shadow-green-lg hover:shadow-green-xl transition-shadow duration-300">
+            <Card key={module.id} className="flex flex-col overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
               <div className="relative h-48 w-full">
                 <Image 
                   src={module.imageUrl} 

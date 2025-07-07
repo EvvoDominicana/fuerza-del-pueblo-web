@@ -1,5 +1,3 @@
-import AppLayout from '@/components/layout/AppLayout';
-import { SidebarNav } from '@/components/navigation/SidebarNav';
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Users, MapPin, Phone, Mail } from 'lucide-react';
@@ -71,38 +69,35 @@ const StructureNode = ({ node }: { node: any }) => (
 
 export default function OrganizationPage() {
   return (
-    <AppLayout>
-      <SidebarNav />
-      <div className="space-y-6">
-        <h1 className="text-3xl font-bold font-headline">Estructura y Organización Interna</h1>
-        
-        <Card className="shadow-lg">
-          <CardHeader>
-            <CardTitle className="font-headline">Mapa de Estructuras del Partido</CardTitle>
-            <CardDescription>Navega la jerarquía y geografía de las estructuras del Partido País Posible.</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <Accordion type="multiple" className="w-full">
-              {structureData.map(node => (
-                <StructureNode key={node.level} node={node} />
-              ))}
-            </Accordion>
-          </CardContent>
-        </Card>
+    <div className="space-y-6">
+      <h1 className="text-3xl font-bold font-headline">Estructura y Organización Interna</h1>
+      
+      <Card className="shadow-green-lg">
+        <CardHeader>
+          <CardTitle className="font-headline">Mapa de Estructuras del Partido</CardTitle>
+          <CardDescription>Navega la jerarquía y geografía de las estructuras del Partido País Posible.</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <Accordion type="multiple" className="w-full">
+            {structureData.map(node => (
+              <StructureNode key={node.level} node={node} />
+            ))}
+          </Accordion>
+        </CardContent>
+      </Card>
 
-        <Card className="shadow-lg">
-          <CardHeader>
-            <CardTitle className="font-headline">Directorio de Contactos</CardTitle>
-            <CardDescription>Información de contacto de los líderes de estructura.</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <p className="text-muted-foreground">
-              El directorio detallado por estructura está disponible para líderes y administradores dentro de sus respectivos paneles de gestión.
-              Aquí se podría mostrar una lista de los principales líderes nacionales o un buscador si fuera público.
-            </p>
-          </CardContent>
-        </Card>
-      </div>
-    </AppLayout>
+      <Card className="shadow-green-lg">
+        <CardHeader>
+          <CardTitle className="font-headline">Directorio de Contactos</CardTitle>
+          <CardDescription>Información de contacto de los líderes de estructura.</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <p className="text-muted-foreground">
+            El directorio detallado por estructura está disponible para líderes y administradores dentro de sus respectivos paneles de gestión.
+            Aquí se podría mostrar una lista de los principales líderes nacionales o un buscador si fuera público.
+          </p>
+        </CardContent>
+      </Card>
+    </div>
   );
 }

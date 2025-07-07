@@ -46,7 +46,7 @@ export default function NewsPage() {
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {newsItems.map((item) => (
-            <Card key={item.id} className="flex flex-col overflow-hidden shadow-green-lg hover:shadow-green-xl transition-shadow duration-300">
+            <Card key={item.id} className="flex flex-col overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
               <Image 
                 src={item.imageUrl} 
                 alt={item.title} 

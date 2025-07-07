@@ -1,4 +1,3 @@
-
 'use client';
 
 import type React from 'react';
@@ -16,6 +15,8 @@ import { AppLogo } from '@/components/common/AppLogo';
 import { Button } from '@/components/ui/button';
 import { UserCircle2, LogOut } from 'lucide-react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { useAuth } from '@/contexts/AuthContext';
 
 function CustomSidebarHeader() {
   const { state } = useSidebar();
@@ -29,8 +30,19 @@ function CustomSidebarHeader() {
   );
 }
 
-
 export default function AppLayout({ children }: { children: React.ReactNode }) {
+  const router = useRouter();
+  const { userProfile, logout } = useAuth();
+
+  const handleLogout = async () => {
+    try {
+      await logout();
+      router.push('/login');
+    } catch (error) {
+      console.error('Error al cerrar sesión:', error);
+    }
+  };
+
   return (
     <SidebarProvider defaultOpen={true}>
       <Sidebar side="left" collapsible="icon" variant="sidebar">
@@ -42,10 +54,16 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
           <Button asChild variant="ghost" className="w-full justify-start gap-2">
             <Link href="/profile">
               <UserCircle2 className="h-5 w-5" />
-              <span className="group-data-[collapsible=icon]:hidden">Mi Cuenta</span>
+              <span className="group-data-[collapsible=icon]:hidden">
+                {userProfile?.displayName || 'Mi Cuenta'}
+              </span>
             </Link>
           </Button>
-          <Button variant="ghost" className="w-full justify-start gap-2 text-destructive hover:text-destructive-foreground hover:bg-destructive">
+          <Button 
+            variant="ghost" 
+            className="w-full justify-start gap-2 text-destructive hover:text-destructive-foreground hover:bg-destructive"
+            onClick={handleLogout}
+          >
             <LogOut className="h-5 w-5" />
             <span className="group-data-[collapsible=icon]:hidden">Cerrar Sesión</span>
           </Button>
