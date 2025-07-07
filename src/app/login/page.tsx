@@ -33,9 +33,22 @@ export default function LoginPage() {
     }
   };
 
-  const handleAdminLogin = () => {
+  const handleAdminLogin = async () => {
     setEmail('admin@paisposible.com');
     setPassword('AdminTotal2024!');
+    setError('');
+    setLoading(true);
+
+    try {
+      // Simular delay y login automático para demo
+      await new Promise(resolve => setTimeout(resolve, 500));
+      await login('admin@paisposible.com', 'AdminTotal2024!');
+      router.push('/dashboard');
+    } catch (err: any) {
+      setError('Error al iniciar sesión. Verifica tus credenciales.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -97,8 +110,9 @@ export default function LoginPage() {
               variant="outline" 
               className="w-full"
               onClick={handleAdminLogin}
+              disabled={loading}
             >
-              🔑 Acceso Administrador
+              {loading ? 'Accediendo...' : '🔑 Acceso Administrador'}
             </Button>
             <p className="text-xs text-gray-500 mt-2 text-center">
               Hace clic para usar las credenciales de administrador
