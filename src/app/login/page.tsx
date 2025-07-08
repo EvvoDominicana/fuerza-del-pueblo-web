@@ -53,6 +53,63 @@ export default function LoginPage() {
     router.push('/dashboard');
   };
 
+  const handleDemoAccess = (userType: string) => {
+    setLoading(true);
+    let userData;
+    
+    switch (userType) {
+      case 'admin':
+        userData = {
+          uid: 'admin-demo-uid',
+          email: 'admin@paisposible.com',
+          displayName: 'Administrador General',
+          role: 'admin',
+          createdAt: new Date(),
+        };
+        break;
+      case 'presidente':
+        userData = {
+          uid: 'presidente-demo-uid',
+          email: 'presidente@paisposible.com',
+          displayName: 'Presidente Regional',
+          role: 'presidente',
+          createdAt: new Date(),
+        };
+        break;
+      case 'coordinador':
+        userData = {
+          uid: 'coordinador-demo-uid',
+          email: 'coordinador@paisposible.com',
+          displayName: 'Coordinador de Área',
+          role: 'coordinador',
+          createdAt: new Date(),
+        };
+        break;
+      case 'voluntario':
+        userData = {
+          uid: 'voluntario-demo-uid',
+          email: 'voluntario@paisposible.com',
+          displayName: 'Voluntario Activo',
+          role: 'voluntario',
+          createdAt: new Date(),
+        };
+        break;
+      default:
+        userData = {
+          uid: 'demo-uid',
+          email: 'demo@paisposible.com',
+          displayName: 'Usuario Demo',
+          role: 'voluntario',
+          createdAt: new Date(),
+        };
+    }
+    
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('mock-user', JSON.stringify(userData));
+    }
+    router.push('/dashboard');
+  };
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-green-50 to-blue-50 p-4">
       <Card className="w-full max-w-md">
@@ -121,15 +178,45 @@ export default function LoginPage() {
             </p>
           </div>
 
-          <div className="mt-4 p-3 bg-green-50 border border-green-200 rounded-lg text-center">
-            <p className="text-sm text-green-800 font-medium mb-2">Demo Listo ✅</p>
-             <Button 
-              className="w-full bg-green-600 hover:bg-green-700 text-white"
-              onClick={handleDirectDashboardAccess}
-              disabled={loading}
-            >
-              {loading ? 'Accediendo...' : '🚀 Ir Directo al Dashboard'}
-            </Button>
+          <div className="mt-4 p-4 bg-green-50 border border-green-200 rounded-lg">
+            <p className="text-sm text-green-800 font-medium mb-3 text-center">🎯 Acceso Demo - Selecciona tu Rol</p>
+            <div className="grid grid-cols-2 gap-2">
+              <Button 
+                variant="outline"
+                className="text-xs bg-red-50 hover:bg-red-100 border-red-200 text-red-800"
+                onClick={() => handleDemoAccess('admin')}
+                disabled={loading}
+              >
+                🔑 Admin
+              </Button>
+              <Button 
+                variant="outline"
+                className="text-xs bg-blue-50 hover:bg-blue-100 border-blue-200 text-blue-800"
+                onClick={() => handleDemoAccess('presidente')}
+                disabled={loading}
+              >
+                👑 Presidente
+              </Button>
+              <Button 
+                variant="outline"
+                className="text-xs bg-purple-50 hover:bg-purple-100 border-purple-200 text-purple-800"
+                onClick={() => handleDemoAccess('coordinador')}
+                disabled={loading}
+              >
+                📋 Coordinador
+              </Button>
+              <Button 
+                variant="outline"
+                className="text-xs bg-green-50 hover:bg-green-100 border-green-200 text-green-800"
+                onClick={() => handleDemoAccess('voluntario')}
+                disabled={loading}
+              >
+                🤝 Voluntario
+              </Button>
+            </div>
+            <p className="text-xs text-gray-500 mt-2 text-center">
+              {loading ? 'Accediendo al dashboard...' : 'Cada rol tiene diferentes permisos y vistas'}
+            </p>
           </div>
         </CardContent>
       </Card>
