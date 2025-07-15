@@ -1,8 +1,11 @@
 'use client';
 
+import { useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { toast } from '@/hooks/use-toast';
 // import { Progress } from '@/components/ui/progress';
 import { 
   Trophy, 
@@ -12,10 +15,123 @@ import {
   Target,
   TrendingUp,
   Users,
-  Gift
+  Gift,
+  ShoppingCart,
+  Smartphone,
+  Coffee,
+  Shirt,
+  BookOpen,
+  Headphones,
+  Monitor,
+  Gamepad2,
+  X
 } from 'lucide-react';
 
 export default function GamificationPage() {
+  const [isRedeemModalOpen, setIsRedeemModalOpen] = useState(false);
+  const [userPoints, setUserPoints] = useState(1250);
+
+  const prizes = [
+    {
+      id: 1,
+      name: 'Camiseta Oficial del Partido',
+      description: 'Camiseta de algodón con logo del partido',
+      points: 200,
+      icon: <Shirt className="h-8 w-8 text-blue-600" />,
+      category: 'Merchandising',
+      stock: 25,
+      image: '/api/placeholder/200/200'
+    },
+    {
+      id: 2,
+      name: 'Libro: "Liderazgo Político"',
+      description: 'Guía completa para líderes políticos modernos',
+      points: 150,
+      icon: <BookOpen className="h-8 w-8 text-green-600" />,
+      category: 'Educación',
+      stock: 15,
+      image: '/api/placeholder/200/200'
+    },
+    {
+      id: 3,
+      name: 'Auriculares Bluetooth',
+      description: 'Auriculares inalámbricos de alta calidad',
+      points: 400,
+      icon: <Headphones className="h-8 w-8 text-purple-600" />,
+      category: 'Tecnología',
+      stock: 8,
+      image: '/api/placeholder/200/200'
+    },
+    {
+      id: 4,
+      name: 'Taza de Café Premium',
+      description: 'Taza térmica con logo del partido',
+      points: 100,
+      icon: <Coffee className="h-8 w-8 text-orange-600" />,
+      category: 'Merchandising',
+      stock: 50,
+      image: '/api/placeholder/200/200'
+    },
+    {
+      id: 5,
+      name: 'Smartphone Prepago',
+      description: 'Teléfono inteligente con plan de datos',
+      points: 800,
+      icon: <Smartphone className="h-8 w-8 text-red-600" />,
+      category: 'Tecnología',
+      stock: 3,
+      image: '/api/placeholder/200/200'
+    },
+    {
+      id: 6,
+      name: 'Monitor Gaming 24"',
+      description: 'Monitor Full HD para gaming y trabajo',
+      points: 1200,
+      icon: <Monitor className="h-8 w-8 text-blue-800" />,
+      category: 'Tecnología',
+      stock: 2,
+      image: '/api/placeholder/200/200'
+    },
+    {
+      id: 7,
+      name: 'Consola de Videojuegos',
+      description: 'Consola portátil con juegos incluidos',
+      points: 1500,
+      icon: <Gamepad2 className="h-8 w-8 text-green-800" />,
+      category: 'Entretenimiento',
+      stock: 1,
+      image: '/api/placeholder/200/200'
+    },
+    {
+      id: 8,
+      name: 'Trofeo Personalizado',
+      description: 'Trofeo grabado con tu nombre y logros',
+      points: 300,
+      icon: <Trophy className="h-8 w-8 text-yellow-600" />,
+      category: 'Reconocimiento',
+      stock: 10,
+      image: '/api/placeholder/200/200'
+    }
+  ];
+
+  const handleRedeem = (prize: any) => {
+    if (userPoints >= prize.points) {
+      setUserPoints(userPoints - prize.points);
+      toast({
+        title: "¡Canje exitoso!",
+        description: `Has canjeado ${prize.name} por ${prize.points} puntos.`,
+        variant: "default",
+      });
+      setIsRedeemModalOpen(false);
+    } else {
+      toast({
+        title: "Puntos insuficientes",
+        description: `Necesitas ${prize.points - userPoints} puntos más para este premio.`,
+        variant: "destructive",
+      });
+    }
+  };
+
   const achievements = [
     {
       id: 1,
@@ -139,10 +255,60 @@ export default function GamificationPage() {
             Gana puntos, desbloquea logros y compite con otros militantes
           </p>
         </div>
-        <Button className="bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600">
-          <Gift className="h-4 w-4 mr-2" />
-          Canjear Puntos
-        </Button>
+        <Dialog open={isRedeemModalOpen} onOpenChange={setIsRedeemModalOpen}>
+          <DialogTrigger asChild>
+            <Button className="bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600">
+              <Gift className="h-4 w-4 mr-2" />
+              Canjear Puntos
+            </Button>
+          </DialogTrigger>
+          <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
+            <DialogHeader>
+              <DialogTitle className="flex items-center gap-2">
+                <ShoppingCart className="h-5 w-5" />
+                Tienda de Recompensas
+              </DialogTitle>
+              <DialogDescription>
+                Tienes {userPoints.toLocaleString()} puntos disponibles para canjear
+              </DialogDescription>
+            </DialogHeader>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
+              {prizes.map((prize) => (
+                <Card key={prize.id} className={`hover:shadow-lg transition-shadow ${userPoints < prize.points ? 'opacity-60' : ''}`}>
+                  <CardHeader className="pb-2">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-2">
+                        {prize.icon}
+                        <Badge variant="secondary">{prize.category}</Badge>
+                      </div>
+                      <Badge variant={userPoints >= prize.points ? 'default' : 'destructive'}>
+                        {prize.points} pts
+                      </Badge>
+                    </div>
+                  </CardHeader>
+                  <CardContent>
+                    <h4 className="font-semibold mb-2">{prize.name}</h4>
+                    <p className="text-sm text-gray-600 mb-3">{prize.description}</p>
+                    <div className="flex items-center justify-between mb-3">
+                      <span className="text-sm text-gray-500">Stock: {prize.stock}</span>
+                      <span className={`text-sm font-medium ${userPoints >= prize.points ? 'text-green-600' : 'text-red-600'}`}>
+                        {userPoints >= prize.points ? 'Disponible' : 'Insuficiente'}
+                      </span>
+                    </div>
+                    <Button 
+                      onClick={() => handleRedeem(prize)}
+                      disabled={userPoints < prize.points || prize.stock === 0}
+                      className="w-full"
+                      variant={userPoints >= prize.points ? 'default' : 'outline'}
+                    >
+                      {userPoints >= prize.points ? 'Canjear' : `Faltan ${prize.points - userPoints} pts`}
+                    </Button>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </DialogContent>
+        </Dialog>
       </div>
 
       {/* User Stats */}
@@ -153,7 +319,7 @@ export default function GamificationPage() {
             <Star className="h-4 w-4 text-yellow-300" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">1,250</div>
+            <div className="text-2xl font-bold">{userPoints.toLocaleString()}</div>
             <p className="text-xs text-blue-100">Posición #5 en ranking</p>
           </CardContent>
         </Card>
@@ -200,14 +366,14 @@ export default function GamificationPage() {
         <CardContent>
           <div className="space-y-4">
             <div className="flex justify-between text-sm">
-              <span>1,250 / 2,000 puntos</span>
-              <span>62.5%</span>
+              <span>{userPoints.toLocaleString()} / 2,000 puntos</span>
+              <span>{((userPoints / 2000) * 100).toFixed(1)}%</span>
             </div>
             <div className="w-full bg-gray-200 rounded-full h-3">
-              <div className="bg-blue-600 h-3 rounded-full transition-all" style={{width: '62.5%'}}></div>
+              <div className="bg-blue-600 h-3 rounded-full transition-all" style={{width: `${(userPoints / 2000) * 100}%`}}></div>
             </div>
             <p className="text-sm text-gray-600">
-              Necesitas 750 puntos más para alcanzar el nivel de Líder Regional
+              Necesitas {(2000 - userPoints).toLocaleString()} puntos más para alcanzar el nivel de Líder Regional
             </p>
           </div>
         </CardContent>

@@ -17,6 +17,26 @@ const MOCK_ADMIN_USER = {
   }
 };
 
+const MOCK_PRESIDENT_USER = {
+  uid: 'presidente-demo-uid',
+  email: 'presidente@paisposible.com',
+  displayName: 'Milton Morrison',
+  role: 'presidente' as const,
+  createdAt: new Date(),
+  permissions: {
+    all: false,
+    manageUsers: true,
+    manageTasks: true,
+    manageEvents: true,
+    manageNews: true,
+    manageTraining: true,
+    manageOrganization: true,
+    viewAnalytics: true,
+    manageMessages: true,
+    strategicPlanning: true
+  }
+};
+
 export const mockAuthService = {
   async login(email: string, password: string) {
     // Simular delay de red
@@ -28,6 +48,14 @@ export const mockAuthService = {
         localStorage.setItem('mock-user', JSON.stringify(MOCK_ADMIN_USER));
       }
       return { user: MOCK_ADMIN_USER };
+    }
+    
+    if (email === 'presidente@paisposible.com' && password === 'Presidente2024!') {
+      // Guardar en localStorage para persistencia
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('mock-user', JSON.stringify(MOCK_PRESIDENT_USER));
+      }
+      return { user: MOCK_PRESIDENT_USER };
     }
     
     throw new Error('Credenciales inválidas');

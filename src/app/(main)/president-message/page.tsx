@@ -3,6 +3,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import { useAuth } from '@/contexts/AuthContext';
 import { 
   Play, 
   Heart,
@@ -15,6 +16,11 @@ import {
 } from 'lucide-react';
 
 export default function PresidentMessagePage() {
+  const { userProfile } = useAuth();
+  
+  // Check if user can create messages (admin or president)
+  const canCreateMessages = userProfile?.role === 'admin' || userProfile?.role === 'presidente';
+  
   const messages = [
     {
       id: 1,
@@ -88,10 +94,12 @@ export default function PresidentMessagePage() {
             Comunicaciones directas de Milton Morrison con el pueblo dominicano
           </p>
         </div>
-        <Button className="bg-blue-600 hover:bg-blue-700">
-          <Play className="h-4 w-4 mr-2" />
-          Nuevo Mensaje
-        </Button>
+        {canCreateMessages && (
+          <Button className="bg-blue-600 hover:bg-blue-700">
+            <Play className="h-4 w-4 mr-2" />
+            Nuevo Mensaje
+          </Button>
+        )}
       </div>
 
       {/* Stats Cards */}

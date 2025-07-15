@@ -2,13 +2,13 @@
 
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { useAuth } from '@/contexts/AuthContext';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { AppLogo } from '@/components/common/AppLogo';
+import { useAuth } from '@/contexts/AuthContext';
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
@@ -20,99 +20,65 @@ export default function LoginPage() {
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError('');
     setLoading(true);
-
+    setError('');
     try {
       await login(email, password);
       router.push('/dashboard');
-    } catch (err: any) {
-      setError('Error al iniciar sesión. Verifica tus credenciales.');
-    } finally {
+    } catch (err) {
+      setError('Credenciales inválidas. Por favor, inténtalo de nuevo.');
       setLoading(false);
     }
   };
-  
+
   const handleAdminAutocomplete = () => {
     setEmail('admin@paisposible.com');
     setPassword('AdminTotal2024!');
   };
 
-  const handleDirectDashboardAccess = () => {
+  const handleDemoAccess = (role: 'admin' | 'presidente' | 'coordinador' | 'voluntario') => {
     setLoading(true);
-    // Simular login para demo
-    if (typeof window !== 'undefined') {
-      localStorage.setItem('mock-user', JSON.stringify({
+
+    const userMap = {
+      admin: {
         uid: 'admin-demo-uid',
         email: 'admin@paisposible.com',
         displayName: 'Administrador General',
-        role: 'admin',
-        createdAt: new Date(),
-      }));
-    }
-    router.push('/dashboard');
-  };
+        role: 'admin'
+      },
+      presidente: {
+        uid: 'presidente-demo-uid',
+        email: 'presidente@paisposible.com',
+        displayName: 'Milton Morrison',
+        role: 'presidente'
+      },
+      coordinador: {
+        uid: 'coordinador-demo-uid',
+        email: 'coordinador@paisposible.com',
+        displayName: 'Ana Rodríguez',
+        role: 'coordinador'
+      },
+      voluntario: {
+        uid: 'voluntario-demo-uid',
+        email: 'voluntario@paisposible.com',
+        displayName: 'Carlos Martínez',
+        role: 'voluntario'
+      }
+    };
+    
+    const userData = { ...userMap[role], createdAt: new Date() };
 
-  const handleDemoAccess = (userType: string) => {
-    setLoading(true);
-    let userData;
-    
-    switch (userType) {
-      case 'admin':
-        userData = {
-          uid: 'admin-demo-uid',
-          email: 'admin@paisposible.com',
-          displayName: 'Administrador General',
-          role: 'admin',
-          createdAt: new Date(),
-        };
-        break;
-      case 'presidente':
-        userData = {
-          uid: 'presidente-demo-uid',
-          email: 'presidente@paisposible.com',
-          displayName: 'Presidente Regional',
-          role: 'presidente',
-          createdAt: new Date(),
-        };
-        break;
-      case 'coordinador':
-        userData = {
-          uid: 'coordinador-demo-uid',
-          email: 'coordinador@paisposible.com',
-          displayName: 'Coordinador de Área',
-          role: 'coordinador',
-          createdAt: new Date(),
-        };
-        break;
-      case 'voluntario':
-        userData = {
-          uid: 'voluntario-demo-uid',
-          email: 'voluntario@paisposible.com',
-          displayName: 'Voluntario Activo',
-          role: 'voluntario',
-          createdAt: new Date(),
-        };
-        break;
-      default:
-        userData = {
-          uid: 'demo-uid',
-          email: 'demo@paisposible.com',
-          displayName: 'Usuario Demo',
-          role: 'voluntario',
-          createdAt: new Date(),
-        };
-    }
-    
     if (typeof window !== 'undefined') {
       localStorage.setItem('mock-user', JSON.stringify(userData));
     }
-    router.push('/dashboard');
+    
+    // Forzar recarga para asegurar que el layout lea el nuevo usuario
+    window.location.href = '/dashboard';
   };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-green-50 to-blue-50 p-4">
-      <Card className="w-full max-w-md">
+      <Card className="w-full max-w-md shadow-2xl">
         <CardHeader className="text-center">
           <div className="flex justify-center mb-4">
             <AppLogo collapsed={false} />
@@ -121,64 +87,12 @@ export default function LoginPage() {
             Iniciar Sesión
           </CardTitle>
           <CardDescription>
-            Accede a País Posible Conecta
+            Accede a la plataforma PPD Conecta
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <form onSubmit={handleLogin} className="space-y-4">
-            <div className="space-y-2">
-              <Label htmlFor="email">Correo Electrónico</Label>
-              <Input
-                id="email"
-                type="email"
-                placeholder="tu@email.com"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="password">Contraseña</Label>
-              <Input
-                id="password"
-                type="password"
-                placeholder="••••••••"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
-            </div>
-            {error && (
-              <Alert className="bg-red-50 border-red-200">
-                <AlertDescription className="text-red-800">
-                  {error}
-                </AlertDescription>
-              </Alert>
-            )}
-            <Button 
-              type="submit" 
-              className="w-full"
-              disabled={loading}
-            >
-              {loading ? 'Iniciando sesión...' : 'Iniciar Sesión'}
-            </Button>
-          </form>
-          
-          <div className="mt-6 pt-4 border-t">
-            <Button 
-              variant="outline" 
-              className="w-full"
-              onClick={handleAdminAutocomplete}
-              disabled={loading}
-            >
-              🔑 Acceso Administrador (Autocompletar)
-            </Button>
-            <p className="text-xs text-gray-500 mt-2 text-center">
-              Hace clic para usar las credenciales de administrador
-            </p>
-          </div>
-
-          <div className="mt-4 p-4 bg-green-50 border border-green-200 rounded-lg">
+          {/* Demo Access Section */}
+          <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg">
             <p className="text-sm text-green-800 font-medium mb-3 text-center">🎯 Acceso Demo - Selecciona tu Rol</p>
             <div className="grid grid-cols-2 gap-2">
               <Button 
@@ -211,13 +125,75 @@ export default function LoginPage() {
                 onClick={() => handleDemoAccess('voluntario')}
                 disabled={loading}
               >
-                🤝 Voluntario
+                🤝 Posibilista
               </Button>
             </div>
             <p className="text-xs text-gray-500 mt-2 text-center">
               {loading ? 'Accediendo al dashboard...' : 'Cada rol tiene diferentes permisos y vistas'}
             </p>
           </div>
+
+          <div className="relative my-4">
+            <div className="absolute inset-0 flex items-center">
+              <span className="w-full border-t" />
+            </div>
+            <div className="relative flex justify-center text-xs uppercase">
+              <span className="bg-card px-2 text-muted-foreground">O inicia sesión</span>
+            </div>
+          </div>
+          
+          {/* Manual Login Form */}
+          <form onSubmit={handleLogin} className="space-y-4">
+            <div className="space-y-2">
+              <Label htmlFor="email">Correo Electrónico</Label>
+              <Input
+                id="email"
+                type="email"
+                placeholder="tu@email.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                disabled={loading}
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="password">Contraseña</Label>
+              <Input
+                id="password"
+                type="password"
+                placeholder="••••••••"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                disabled={loading}
+              />
+            </div>
+            {error && (
+              <Alert variant="destructive">
+                <AlertDescription>
+                  {error}
+                </AlertDescription>
+              </Alert>
+            )}
+            <div className="flex items-center gap-2">
+               <Button 
+                type="button"
+                variant="outline" 
+                className="w-full"
+                onClick={handleAdminAutocomplete}
+                disabled={loading}
+              >
+                Autocompletar Admin
+              </Button>
+              <Button 
+                type="submit" 
+                className="w-full"
+                disabled={loading}
+              >
+                {loading ? 'Validando...' : 'Entrar'}
+              </Button>
+            </div>
+          </form>
         </CardContent>
       </Card>
     </div>

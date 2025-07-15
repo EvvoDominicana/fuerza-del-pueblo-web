@@ -1,5 +1,6 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -13,6 +14,17 @@ import {
 } from 'lucide-react';
 
 export default function NewsPage() {
+  const [userProfile, setUserProfile] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const user = localStorage.getItem('mock-user');
+    if (user) {
+      setUserProfile(JSON.parse(user));
+    }
+    setLoading(false);
+  }, []);
+
   const newsArticles = [
     {
       id: 1,
@@ -78,6 +90,17 @@ export default function NewsPage() {
     }
   };
 
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center h-full">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-600"></div>
+      </div>
+    );
+  }
+
+  const userRole = userProfile?.role || 'voluntario';
+  const canPublish = userRole === 'admin' || userRole === 'presidente' || userRole === 'coordinador';
+
   return (
     <div className="space-y-6">
       {/* Header */}
@@ -85,58 +108,101 @@ export default function NewsPage() {
         <div>
           <h1 className="text-3xl font-bold text-gray-900">Centro de Noticias</h1>
           <p className="text-gray-600 mt-1">
-            Mantente informado sobre las últimas actividades y propuestas del partido
+            {userRole === 'voluntario' 
+              ? 'Mantente informado sobre las últimas actividades y propuestas del partido'
+              : 'Gestiona y mantente informado sobre las noticias del partido'
+            }
           </p>
         </div>
-        <Button className="bg-green-600 hover:bg-green-700">
-          <Newspaper className="h-4 w-4 mr-2" />
-          Publicar Noticia
-        </Button>
+        {canPublish && (
+          <Button className="bg-green-600 hover:bg-green-700">
+            <Newspaper className="h-4 w-4 mr-2" />
+            Publicar Noticia
+          </Button>
+        )}
       </div>
 
-      {/* Stats Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Noticias Publicadas</CardTitle>
-            <Newspaper className="h-4 w-4 text-blue-600" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">47</div>
-            <p className="text-xs text-muted-foreground">Este mes</p>
-          </CardContent>
-        </Card>
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Total Vistas</CardTitle>
-            <Eye className="h-4 w-4 text-green-600" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">12,456</div>
-            <p className="text-xs text-muted-foreground">Lectores alcanzados</p>
-          </CardContent>
-        </Card>
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Compartidas</CardTitle>
-            <Share2 className="h-4 w-4 text-purple-600" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">1,892</div>
-            <p className="text-xs text-muted-foreground">En redes sociales</p>
-          </CardContent>
-        </Card>
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Comentarios</CardTitle>
-            <MessageCircle className="h-4 w-4 text-orange-600" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">346</div>
-            <p className="text-xs text-muted-foreground">Interacciones</p>
-          </CardContent>
-        </Card>
-      </div>
+      {/* Stats Cards - Solo para roles con permisos de gestión */}
+      {canPublish && (
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+          <Card>
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+              <CardTitle className="text-sm font-medium">Noticias Publicadas</CardTitle>
+              <Newspaper className="h-4 w-4 text-blue-600" />
+            </CardHeader>
+            <CardContent>
+              <div className="text-2xl font-bold">47</div>
+              <p className="text-xs text-muted-foreground">Este mes</p>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+              <CardTitle className="text-sm font-medium">Total Vistas</CardTitle>
+              <Eye className="h-4 w-4 text-green-600" />
+            </CardHeader>
+            <CardContent>
+              <div className="text-2xl font-bold">12,456</div>
+              <p className="text-xs text-muted-foreground">Lectores alcanzados</p>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+              <CardTitle className="text-sm font-medium">Compartidas</CardTitle>
+              <Share2 className="h-4 w-4 text-purple-600" />
+            </CardHeader>
+            <CardContent>
+              <div className="text-2xl font-bold">1,892</div>
+              <p className="text-xs text-muted-foreground">En redes sociales</p>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+              <CardTitle className="text-sm font-medium">Comentarios</CardTitle>
+              <MessageCircle className="h-4 w-4 text-orange-600" />
+            </CardHeader>
+            <CardContent>
+              <div className="text-2xl font-bold">346</div>
+              <p className="text-xs text-muted-foreground">Interacciones</p>
+            </CardContent>
+          </Card>
+        </div>
+      )}
+
+      {/* Stats simplificadas para Posibilistas Activos */}
+      {userRole === 'voluntario' && (
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <Card>
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+              <CardTitle className="text-sm font-medium">Noticias Leídas</CardTitle>
+              <Eye className="h-4 w-4 text-green-600" />
+            </CardHeader>
+            <CardContent>
+              <div className="text-2xl font-bold">23</div>
+              <p className="text-xs text-muted-foreground">Este mes</p>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+              <CardTitle className="text-sm font-medium">Compartidas</CardTitle>
+              <Share2 className="h-4 w-4 text-purple-600" />
+            </CardHeader>
+            <CardContent>
+              <div className="text-2xl font-bold">8</div>
+              <p className="text-xs text-muted-foreground">En redes sociales</p>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+              <CardTitle className="text-sm font-medium">Comentarios</CardTitle>
+              <MessageCircle className="h-4 w-4 text-orange-600" />
+            </CardHeader>
+            <CardContent>
+              <div className="text-2xl font-bold">5</div>
+              <p className="text-xs text-muted-foreground">Realizados</p>
+            </CardContent>
+          </Card>
+        </div>
+      )}
 
       {/* Featured News */}
       <Card>

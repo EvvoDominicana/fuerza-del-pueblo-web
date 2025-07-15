@@ -17,6 +17,7 @@ import { UserCircle2, LogOut } from 'lucide-react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/contexts/AuthContext';
+import { SidebarNav } from '@/components/navigation/SidebarNav';
 
 function CustomSidebarHeader() {
   const { state } = useSidebar();
@@ -30,7 +31,7 @@ function CustomSidebarHeader() {
   );
 }
 
-export default function AppLayout({ children }: { children: React.ReactNode }) {
+export function AppLayout({ children }: { children: React.ReactNode }) {
   const router = useRouter();
   const { userProfile, logout } = useAuth();
 
@@ -48,7 +49,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
       <Sidebar side="left" collapsible="icon" variant="sidebar">
         <CustomSidebarHeader />
         <SidebarContent>
-          {/* SidebarNav will be a child of AppLayout where it's used */}
+          <SidebarNav />
         </SidebarContent>
         <SidebarFooter>
           <Button asChild variant="ghost" className="w-full justify-start gap-2">

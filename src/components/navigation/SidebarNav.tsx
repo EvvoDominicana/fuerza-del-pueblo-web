@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useAuth } from '@/contexts/AuthContext';
 import {
   LayoutDashboard,
   UserCircle2,
@@ -12,36 +13,44 @@ import {
   ListChecks,
   GraduationCap,
   MessageCircle,
-  Settings,
 } from 'lucide-react';
 import {
   SidebarMenu,
   SidebarMenuItem,
   SidebarMenuButton,
-  SidebarMenuSub,
-  SidebarMenuSubItem,
-  SidebarMenuSubButton,
 } from '@/components/ui/sidebar';
 import { cn } from '@/lib/utils';
 
 const navItems = [
-  { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
-  { href: '/profile', label: 'Mi Perfil', icon: UserCircle2 },
-  { href: '/organization', label: 'Organización', icon: Users },
-  { href: '/news', label: 'Noticias', icon: Newspaper },
-  { href: '/events', label: 'Eventos', icon: CalendarDays },
-  { href: '/gamification', label: 'Reconocimientos', icon: Trophy },
-  { href: '/tasks', label: 'Tareas', icon: ListChecks },
-  { href: '/training', label: 'Capacitación', icon: GraduationCap },
-  { href: '/president-message', label: 'Mensaje del Presidente', icon: MessageCircle },
+  { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard, roles: ['admin', 'presidente', 'coordinador', 'voluntario'] },
+  { href: '/profile', label: 'Mi Perfil', icon: UserCircle2, roles: ['admin', 'presidente', 'coordinador', 'voluntario'] },
+  { href: '/organization', label: 'Organización', icon: Users, roles: ['admin', 'presidente'] },
+  { href: '/news', label: 'Noticias', icon: Newspaper, roles: ['admin', 'presidente', 'coordinador', 'voluntario'] },
+  { href: '/events', label: 'Eventos', icon: CalendarDays, roles: ['admin', 'presidente', 'coordinador', 'voluntario'] },
+  { href: '/gamification', label: 'Reconocimientos', icon: Trophy, roles: ['admin', 'presidente', 'coordinador', 'voluntario'] },
+  { href: '/tasks', label: 'Tareas', icon: ListChecks, roles: ['admin', 'presidente', 'coordinador', 'voluntario'] },
+  { href: '/training', label: 'Capacitación', icon: GraduationCap, roles: ['admin', 'presidente', 'coordinador', 'voluntario'] },
+  { href: '/president-message', label: 'Mensaje del Presidente', icon: MessageCircle, roles: ['admin', 'presidente', 'coordinador', 'voluntario'] },
 ];
 
 export function SidebarNav() {
   const pathname = usePathname();
+  const { userProfile } = useAuth();
+
+  // Si no hay perfil, no renderizar nada hasta que se redirija
+  if (!userProfile) {
+    return null;
+  }
+
+  const userRole = userProfile.role;
+
+  const filteredNavItems = navItems.filter(item => 
+    item.roles.includes(userRole)
+  );
 
   return (
     <SidebarMenu>
-      {navItems.map((item) => (
+      {filteredNavItems.map((item) => (
         <SidebarMenuItem key={item.label}>
           <SidebarMenuButton
             asChild
