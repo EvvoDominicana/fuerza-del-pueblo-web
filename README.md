@@ -4,7 +4,12 @@ Plataforma integral de movilización, inteligencia y gestión electoral diseñad
 
 ## 🚀 Funcionalidades Principales
 
-### 📊 Inteligencia Electoral (Encuestas)
+### 📉 Inteligencia Electoral (v2.0)
+- **Visualización Territorial (La Mancha Verde):** Mapa interactivo de la República Dominicana con gradientes de color verde que indican el nivel de conquista por zona. Marcador de "Flor de Cayena" para zonas al 100%.
+- **Defensa del Voto (Argumentario):** Biblioteca dinámica de argumentos programáticos (Seguridad, Economía, Infraestructura) para capacitar a militantes en el debate de calle.
+- **Estructura Digital Institucional:** Sistema de rangos y gamificación basado en el organigrama oficial del partido (Militante de Base -> Dirección Media -> Dirección Central).
+
+### 📊 Análisis Estratégico
 - **Construcción Dinámica:** Editor de encuestas para capturar la intención de voto en tiempo real.
 - **Análisis Estratégico:** Dashboard ejecutivo con gráficos de tendencias y KPIs electorales.
 - **Exportación Profesional:** Generación de reportes ejecutivos en PDF para la alta dirección.

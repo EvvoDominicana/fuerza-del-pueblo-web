@@ -368,7 +368,10 @@ export default function ProfilePage() {
                   {profile.role === 'presidente' && <Crown className="h-3 w-3 mr-1" />}
                   {profile.role === 'coordinador' && <Flag className="h-3 w-3 mr-1" />}
                   {profile.role === 'voluntario' && <User className="h-3 w-3 mr-1" />}
-                  {profile.role}
+                  {profile.role === 'voluntario' ? 'Militante de Base' :
+                    profile.role === 'coordinador' ? 'Dirección Media' :
+                      profile.role === 'presidente' ? 'Dirección Central' :
+                        profile.role}
                 </Badge>
                 <Badge variant="outline" className="bg-green-100 text-green-800 border-green-300">
                   <div className="w-2 h-2 bg-green-500 rounded-full mr-2"></div>

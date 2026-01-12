@@ -16,6 +16,7 @@ import {
   Settings,
   Rocket,
   TrendingUp,
+  BookOpen,
   PieChart as PieChartIcon
 } from 'lucide-react';
 import {
@@ -34,6 +35,7 @@ const navItems = [
   { href: '/events', label: 'Eventos', icon: CalendarDays, roles: ['admin', 'presidente', 'coordinador', 'voluntario'] },
   { href: '/gamification', label: 'Reconocimientos', icon: Trophy, roles: ['admin', 'presidente', 'coordinador', 'voluntario'] },
   { href: '/tasks', label: 'Tareas', icon: ListChecks, roles: ['admin', 'presidente', 'coordinador', 'voluntario'] },
+  { href: '/proposals', label: 'Argumentario 2028', icon: BookOpen, roles: ['admin', 'presidente', 'coordinador', 'voluntario'] },
   { href: '/structure', label: 'Mi 1x10', icon: Users, roles: ['admin', 'coordinador', 'voluntario'] },
   { href: '/structure/analytics', label: 'Inteligencia Estructura', icon: TrendingUp, roles: ['admin', 'presidente'] },
   { href: '/surveys', label: 'Encuestas', icon: MessageCircle, roles: ['admin', 'coordinador', 'voluntario'] },

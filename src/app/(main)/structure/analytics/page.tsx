@@ -8,9 +8,10 @@ import {
     BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
     LineChart, Line
 } from 'recharts';
-import { Users, Target, TrendingUp, AlertCircle, MapPin, ShieldCheck } from 'lucide-react';
+import { Users, Target, TrendingUp, AlertCircle, MapPin, ShieldCheck, Map as MapIcon } from 'lucide-react';
 import { collection, getDocs, query, orderBy } from 'firebase/firestore';
 import { db as firestore } from '@/lib/firebase';
+import VotoVerdeMap from '@/components/analytics/VotoVerdeMap';
 
 export default function StructureAnalyticsPage() {
     const { userProfile } = useAuth();
@@ -103,6 +104,37 @@ export default function StructureAnalyticsPage() {
                     </CardContent>
                 </Card>
             </div>
+
+            {/* La Mancha Verde: Mapa de Calor Territorial */}
+            <Card className="border-2 border-primary/20 overflow-hidden">
+                <CardHeader className="bg-primary/5 pb-6">
+                    <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                        <div>
+                            <CardTitle className="text-2xl font-black flex items-center gap-2 text-primary uppercase tracking-tighter">
+                                <MapIcon className="h-6 w-6" /> La Mancha Verde
+                            </CardTitle>
+                            <CardDescription className="text-slate-500 font-medium">Control territorial y conquista de metas por zona</CardDescription>
+                        </div>
+                        <div className="flex flex-wrap gap-2">
+                            <div className="flex items-center gap-1.5 px-3 py-1 bg-white border rounded-full text-[10px] font-bold">
+                                <div className="w-2 h-2 rounded-full bg-[#95a5a6]" /> Frío
+                            </div>
+                            <div className="flex items-center gap-1.5 px-3 py-1 bg-white border rounded-full text-[10px] font-bold">
+                                <div className="w-2 h-2 rounded-full bg-[#2ecc71]" /> En Progreso
+                            </div>
+                            <div className="flex items-center gap-1.5 px-3 py-1 bg-white border rounded-full text-[10px] font-bold text-primary">
+                                <div className="w-2 h-2 rounded-full bg-primary" /> Consolidado
+                            </div>
+                            <div className="flex items-center gap-1.5 px-3 py-1 bg-white border rounded-full text-[10px] font-bold text-red-600">
+                                <div className="w-2 h-2 rounded-full bg-[#e74c3c]" /> ¡Victoria! 🌺
+                            </div>
+                        </div>
+                    </div>
+                </CardHeader>
+                <CardContent className="p-0">
+                    <VotoVerdeMap />
+                </CardContent>
+            </Card>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 <Card>
