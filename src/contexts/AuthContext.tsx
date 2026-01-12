@@ -2,7 +2,6 @@
 
 import React, { createContext, useContext, useEffect, useState } from 'react';
 
-// Define el tipo de perfil de usuario para asegurar consistencia
 interface UserProfile {
   uid: string;
   email: string;
@@ -29,30 +28,30 @@ export const useAuth = () => {
   return context;
 };
 
-// Mapa de usuarios para la demo
+// Mapa de usuarios para la demo de Fuerza del Pueblo
 const demoUsers = {
-  'admin@partido.com': {
+  'admin@fuerzadelpueblo.do': {
     uid: 'admin-demo-uid',
-    email: 'admin@partido.com',
-    displayName: 'Administrador General',
+    email: 'admin@fuerzadelpueblo.do',
+    displayName: 'Administrador FP',
     role: 'admin' as const,
   },
-  'presidente@partido.com': {
+  'leonel.fernandez@fuerzadelpueblo.do': {
     uid: 'presidente-demo-uid',
-    email: 'presidente@partido.com',
-    displayName: 'Carlos Mendoza',
+    email: 'leonel.fernandez@fuerzadelpueblo.do',
+    displayName: 'Leonel Fernández',
     role: 'presidente' as const,
   },
-  'coordinador@partido.com': {
+  'coordinador@fuerzadelpueblo.do': {
     uid: 'coordinador-demo-uid',
-    email: 'coordinador@partido.com',
-    displayName: 'Ana Rodríguez',
+    email: 'coordinador@fuerzadelpueblo.do',
+    displayName: 'Coordinador/a FP',
     role: 'coordinador' as const,
   },
-  'voluntario@partido.com': {
+  'militante@fuerzadelpueblo.do': {
     uid: 'voluntario-demo-uid',
-    email: 'voluntario@partido.com',
-    displayName: 'Carlos Martínez',
+    email: 'militante@fuerzadelpueblo.do',
+    displayName: 'Militante FP',
     role: 'voluntario' as const,
   }
 };
@@ -62,7 +61,6 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Este efecto se ejecuta solo en el cliente
     try {
       const storedUser = localStorage.getItem('mock-user');
       if (storedUser) {
@@ -77,12 +75,10 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   }, []);
 
   const login = async (email: string, password: string): Promise<void> => {
-    // Simulación de login con delay
     await new Promise(resolve => setTimeout(resolve, 500));
     
-    // Para la demo, validamos solo el admin
-    if (email === 'admin@partido.com' && password === 'AdminTotal2024!') {
-      const userData = { ...demoUsers['admin@partido.com'], createdAt: new Date() };
+    if (email === 'admin@fuerzadelpueblo.do' && password === 'AdminFp2024!') {
+      const userData = { ...demoUsers['admin@fuerzadelpueblo.do'], createdAt: new Date() };
       localStorage.setItem('mock-user', JSON.stringify(userData));
       setUserProfile(userData);
       return;
@@ -94,7 +90,6 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const logout = () => {
     localStorage.removeItem('mock-user');
     setUserProfile(null);
-    // Redirección forzada para limpiar el estado
     window.location.href = '/login';
   };
 

@@ -4,8 +4,8 @@ import { Toaster } from "@/components/ui/toaster";
 import { ClientProviders } from '@/components/providers/ClientProviders';
 
 export const metadata: Metadata = {
-  title: 'Partido Político Conecta',
-  description: 'Plataforma oficial del partido político',
+  title: 'FP Conecta',
+  description: 'Plataforma oficial de la Fuerza del Pueblo',
 };
 
 export default function RootLayout({

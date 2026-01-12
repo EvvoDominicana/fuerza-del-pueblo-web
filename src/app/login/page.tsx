@@ -32,8 +32,8 @@ export default function LoginPage() {
   };
 
   const handleAdminAutocomplete = () => {
-    setEmail('admin@partido.com');
-    setPassword('AdminTotal2024!');
+    setEmail('admin@fuerzadelpueblo.do');
+    setPassword('AdminFp2024!');
   };
 
   const handleDemoAccess = (role: 'admin' | 'presidente' | 'coordinador' | 'voluntario') => {
@@ -42,26 +42,26 @@ export default function LoginPage() {
     const userMap = {
       admin: {
         uid: 'admin-demo-uid',
-        email: 'admin@partido.com',
-        displayName: 'Administrador General',
+        email: 'admin@fuerzadelpueblo.do',
+        displayName: 'Administrador FP',
         role: 'admin'
       },
       presidente: {
         uid: 'presidente-demo-uid',
-        email: 'presidente@partido.com',
-        displayName: 'Carlos Mendoza',
+        email: 'leonel.fernandez@fuerzadelpueblo.do',
+        displayName: 'Leonel Fernández',
         role: 'presidente'
       },
       coordinador: {
         uid: 'coordinador-demo-uid',
-        email: 'coordinador@partido.com',
-        displayName: 'Ana Rodríguez',
+        email: 'coordinador@fuerzadelpueblo.do',
+        displayName: 'Coordinador/a FP',
         role: 'coordinador'
       },
       voluntario: {
         uid: 'voluntario-demo-uid',
-        email: 'voluntario@paisposible.com',
-        displayName: 'Carlos Martínez',
+        email: 'militante@fuerzadelpueblo.do',
+        displayName: 'Militante FP',
         role: 'voluntario'
       }
     };
@@ -72,12 +72,11 @@ export default function LoginPage() {
       localStorage.setItem('mock-user', JSON.stringify(userData));
     }
     
-    // Forzar recarga para asegurar que el layout lea el nuevo usuario
     window.location.href = '/dashboard';
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-green-50 to-blue-50 p-4">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-green-50 to-gray-50 p-4">
       <Card className="w-full max-w-md shadow-2xl">
         <CardHeader className="text-center">
           <div className="flex justify-center mb-4">
@@ -87,11 +86,10 @@ export default function LoginPage() {
             Iniciar Sesión
           </CardTitle>
           <CardDescription>
-            Accede a la plataforma PPD Conecta
+            Accede a la plataforma FP Conecta
           </CardDescription>
         </CardHeader>
         <CardContent>
-          {/* Demo Access Section */}
           <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg">
             <p className="text-sm text-green-800 font-medium mb-3 text-center">🎯 Acceso Demo - Selecciona tu Rol</p>
             <div className="grid grid-cols-2 gap-2">
@@ -125,7 +123,7 @@ export default function LoginPage() {
                 onClick={() => handleDemoAccess('voluntario')}
                 disabled={loading}
               >
-                🤝 Voluntario
+                🤝 Militante
               </Button>
             </div>
             <p className="text-xs text-gray-500 mt-2 text-center">
@@ -142,7 +140,6 @@ export default function LoginPage() {
             </div>
           </div>
           
-          {/* Manual Login Form */}
           <form onSubmit={handleLogin} className="space-y-4">
             <div className="space-y-2">
               <Label htmlFor="email">Correo Electrónico</Label>

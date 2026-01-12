@@ -28,54 +28,54 @@ export default function NewsPage() {
   const newsArticles = [
     {
       id: 1,
-      title: 'Carlos Mendoza Presenta Nueva Propuesta de Desarrollo Rural',
-      excerpt: 'El líder del Partido Político presenta un plan integral para el desarrollo del sector agropecuario dominicano.',
-      content: 'En una conferencia de prensa realizada en Santiago, Carlos Mendoza detalló su propuesta para revolucionar el sector rural...',
-      author: 'Equipo de Comunicaciones',
-      date: '2024-01-18',
+      title: 'Leonel Fernández Presenta Propuesta de Desarrollo Económico',
+      excerpt: 'El líder de la Fuerza del Pueblo presenta un plan integral para el crecimiento económico y la creación de empleos.',
+      content: 'En una conferencia de prensa, Leonel Fernández detalló su propuesta para modernizar la economía dominicana...',
+      author: 'Comunicaciones FP',
+      date: '2024-07-10',
       category: 'Propuestas',
-      views: 1245,
-      comments: 23,
-      shares: 45,
+      views: 5245,
+      comments: 123,
+      shares: 450,
       featured: true
     },
     {
       id: 2,
-      title: 'Jornada de Capacitación en Municipios del Norte',
-      excerpt: 'Más de 200 militantes participaron en talleres sobre participación ciudadana y desarrollo comunitario.',
-      content: 'La exitosa jornada se realizó simultáneamente en Santiago, Puerto Plata y Valverde con gran participación...',
+      title: 'Exitosa Jornada de Afiliación en la Región Norte',
+      excerpt: 'Más de 5,000 nuevos miembros se suman a la Fuerza del Pueblo en Santiago y provincias aledañas.',
+      content: 'La jornada superó todas las expectativas, demostrando el crecimiento exponencial del partido en el Cibao...',
       author: 'Coordinación Regional Norte',
-      date: '2024-01-16',
+      date: '2024-07-08',
       category: 'Actividades',
-      views: 892,
-      comments: 15,
-      shares: 28,
+      views: 3892,
+      comments: 85,
+      shares: 280,
       featured: false
     },
     {
       id: 3,
-      title: 'Partido Político Lanza Campaña "Juventud con Futuro"',
-      excerpt: 'Nueva iniciativa dirigida a jóvenes dominicanos para promover la participación política y el desarrollo profesional.',
-      content: 'La campaña incluye becas de estudio, programas de mentoring y oportunidades de liderazgo para jóvenes...',
-      author: 'Secretaría de Juventud',
-      date: '2024-01-14',
+      title: 'Fuerza del Pueblo Lanza Campaña "Juventud Protagonista"',
+      excerpt: 'Nueva iniciativa para promover la participación política y el liderazgo de los jóvenes dominicanos.',
+      content: 'La campaña incluye programas de formación, debate y participación en la toma de decisiones del partido...',
+      author: 'Secretaría de la Juventud FP',
+      date: '2024-07-05',
       category: 'Iniciativas',
-      views: 2156,
-      comments: 67,
-      shares: 89,
+      views: 7156,
+      comments: 267,
+      shares: 890,
       featured: true
     },
     {
       id: 4,
-      title: 'Alianza Estratégica con Organizaciones de la Sociedad Civil',
-      excerpt: 'El Partido Político firma acuerdos de colaboración con importantes ONGs para fortalecer el trabajo comunitario.',
-      content: 'Los acuerdos incluyen proyectos de desarrollo sostenible, educación y fortalecimiento institucional...',
-      author: 'Departamento de Alianzas',
-      date: '2024-01-12',
+      title: 'Alianza Estratégica con Sector Agropecuario',
+      excerpt: 'La Fuerza del Pueblo firma acuerdos para fortalecer la producción nacional y la seguridad alimentaria.',
+      content: 'Los acuerdos buscan impulsar la tecnología en el campo y mejorar las condiciones de los productores...',
+      author: 'Secretaría de Asuntos Agropecuarios',
+      date: '2024-07-02',
       category: 'Alianzas',
-      views: 756,
-      comments: 12,
-      shares: 34,
+      views: 2756,
+      comments: 62,
+      shares: 134,
       featured: false
     }
   ];
@@ -93,7 +93,7 @@ export default function NewsPage() {
   if (loading) {
     return (
       <div className="flex items-center justify-center h-full">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-600"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
       </div>
     );
   }
@@ -103,35 +103,33 @@ export default function NewsPage() {
 
   return (
     <div className="space-y-6">
-      {/* Header */}
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-3xl font-bold text-gray-900">Centro de Noticias</h1>
           <p className="text-gray-600 mt-1">
             {userRole === 'voluntario' 
-              ? 'Mantente informado sobre las últimas actividades y propuestas del partido'
+              ? 'Mantente informado sobre las últimas actividades de la Fuerza del Pueblo'
               : 'Gestiona y mantente informado sobre las noticias del partido'
             }
           </p>
         </div>
         {canPublish && (
-          <Button className="bg-green-600 hover:bg-green-700">
+          <Button className="bg-primary hover:bg-primary/90">
             <Newspaper className="h-4 w-4 mr-2" />
             Publicar Noticia
           </Button>
         )}
       </div>
 
-      {/* Stats Cards - Solo para roles con permisos de gestión */}
       {canPublish && (
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Noticias Publicadas</CardTitle>
-              <Newspaper className="h-4 w-4 text-blue-600" />
+              <Newspaper className="h-4 w-4 text-primary" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">47</div>
+              <div className="text-2xl font-bold">147</div>
               <p className="text-xs text-muted-foreground">Este mes</p>
             </CardContent>
           </Card>
@@ -141,7 +139,7 @@ export default function NewsPage() {
               <Eye className="h-4 w-4 text-green-600" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">12,456</div>
+              <div className="text-2xl font-bold">312,456</div>
               <p className="text-xs text-muted-foreground">Lectores alcanzados</p>
             </CardContent>
           </Card>
@@ -151,7 +149,7 @@ export default function NewsPage() {
               <Share2 className="h-4 w-4 text-purple-600" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">1,892</div>
+              <div className="text-2xl font-bold">18,892</div>
               <p className="text-xs text-muted-foreground">En redes sociales</p>
             </CardContent>
           </Card>
@@ -161,14 +159,13 @@ export default function NewsPage() {
               <MessageCircle className="h-4 w-4 text-orange-600" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">346</div>
+              <div className="text-2xl font-bold">3,346</div>
               <p className="text-xs text-muted-foreground">Interacciones</p>
             </CardContent>
           </Card>
         </div>
       )}
 
-      {/* Stats simplificadas para Voluntarios Activos */}
       {userRole === 'voluntario' && (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <Card>
@@ -204,18 +201,17 @@ export default function NewsPage() {
         </div>
       )}
 
-      {/* Featured News */}
       <Card>
         <CardHeader>
           <CardTitle>Noticias Destacadas</CardTitle>
           <CardDescription>
-            Las noticias más importantes del partido
+            Las noticias más importantes de la Fuerza del Pueblo
           </CardDescription>
         </CardHeader>
         <CardContent>
           <div className="space-y-6">
             {newsArticles.filter(article => article.featured).map((article) => (
-              <div key={article.id} className="p-6 border rounded-lg bg-gradient-to-r from-blue-50 to-green-50">
+              <div key={article.id} className="p-6 border rounded-lg bg-gradient-to-r from-green-50 to-teal-50">
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex-1">
                     <div className="flex items-center gap-3 mb-2">
@@ -243,7 +239,7 @@ export default function NewsPage() {
                       </div>
                     </div>
                   </div>
-                  <Button className="bg-green-600 hover:bg-green-700">
+                  <Button className="bg-primary hover:bg-primary/90">
                     Leer Más
                   </Button>
                 </div>
@@ -253,7 +249,6 @@ export default function NewsPage() {
         </CardContent>
       </Card>
 
-      {/* Recent News */}
       <Card>
         <CardHeader>
           <CardTitle>Noticias Recientes</CardTitle>

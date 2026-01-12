@@ -13,22 +13,22 @@ export interface PartySettings {
   description: string;
 }
 
+const DEFAULT_SETTINGS: PartySettings = {
+  partyName: 'Fuerza del Pueblo',
+  partySlogan: 'La Fuerza que nos une',
+  partyLogo: 'https://i.imgur.com/gY38P7r.png',
+  primaryColor: '#00a651', // Verde principal del logo de FP
+  secondaryColor: '#008441', // Un verde más oscuro para contraste
+  websiteUrl: 'https://www.fuerzadelpueblo.do',
+  contactEmail: 'info@fuerzadelpueblo.do',
+  description: 'Somos el partido de la Fuerza del Pueblo, comprometidos con el desarrollo y el bienestar de todos los dominicanos.'
+};
+
 interface PartySettingsContextType {
   settings: PartySettings;
   updateSettings: (newSettings: Partial<PartySettings>) => void;
   resetSettings: () => void;
 }
-
-const DEFAULT_SETTINGS: PartySettings = {
-  partyName: 'Partido Político',
-  partySlogan: 'Trabajando por un futuro mejor',
-  partyLogo: '/partido-logo.png',
-  primaryColor: '#3b82f6',
-  secondaryColor: '#8b5cf6',
-  websiteUrl: 'https://www.partido.com',
-  contactEmail: 'info@partido.com',
-  description: 'Somos un partido político comprometido con el desarrollo y el bienestar de todos los ciudadanos.'
-};
 
 const PartySettingsContext = createContext<PartySettingsContextType | undefined>(undefined);
 
@@ -48,6 +48,7 @@ export const PartySettingsProvider: React.FC<{ children: React.ReactNode }> = ({
     if (savedSettings) {
       try {
         const parsed = JSON.parse(savedSettings);
+        // Mezclamos los defaults con los guardados para evitar que falten propiedades
         setSettings({ ...DEFAULT_SETTINGS, ...parsed });
       } catch (error) {
         console.error('Error loading party settings:', error);
@@ -59,6 +60,12 @@ export const PartySettingsProvider: React.FC<{ children: React.ReactNode }> = ({
     const updatedSettings = { ...settings, ...newSettings };
     setSettings(updatedSettings);
     localStorage.setItem('partySettings', JSON.stringify(updatedSettings));
+    
+    // Opcional: Actualizar las variables CSS de la raíz si los colores cambian
+    if (newSettings.primaryColor) {
+      // Esta es una simplificación. En una app real, convertirías HEX a HSL.
+      // Por ahora, el reinicio de la página tras guardar en settings aplicará los cambios de `globals.css`
+    }
   };
 
   const resetSettings = () => {

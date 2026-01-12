@@ -17,10 +17,10 @@ export default function OrganizationPage() {
   const organizationData = [
     {
       level: 'Nacional',
-      name: 'Comité Ejecutivo Nacional',
-      leader: 'Carlos Mendoza',
-      members: 15,
-      regions: 32,
+      name: 'Dirección Central',
+      leader: 'Leonel Fernández',
+      members: 25,
+      regions: 1,
       color: 'bg-purple-100 text-purple-800'
     },
     {
@@ -33,87 +33,85 @@ export default function OrganizationPage() {
     },
     {
       level: 'Provincial',
-      name: 'Estructuras Provinciales',
-      leader: 'Coordinadores Provinciales',
+      name: 'Direcciones Provinciales',
+      leader: 'Presidentes Provinciales',
       members: 456,
       regions: 32,
       color: 'bg-green-100 text-green-800'
     },
     {
       level: 'Municipal',
-      name: 'Comités Municipales',
-      leader: 'Coordinadores Municipales',
+      name: 'Direcciones Municipales',
+      leader: 'Presidentes Municipales',
       members: 1234,
       regions: 158,
       color: 'bg-orange-100 text-orange-800'
     },
     {
-      level: 'Sectorial',
-      name: 'Estructuras Sectoriales',
-      leader: 'Coordinadores Sectoriales',
-      members: 2847,
-      regions: 445,
+      level: 'De Base',
+      name: 'Comités de Base',
+      leader: 'Coordinadores de Comités',
+      members: 352847,
+      regions: '30,000+',
       color: 'bg-indigo-100 text-indigo-800'
     }
   ];
 
   const leaders = [
     {
-      name: 'Carlos Mendoza',
-      position: 'Presidente Nacional',
+      name: 'Leonel Fernández',
+      position: 'Presidente del Partido',
       region: 'Nacional',
-      phone: '+1 (809) 555-0001',
-      email: 'carlos.mendoza@partido.com',
-      members: 2847
+      phone: '+1 (809) 555-0100',
+      email: 'l.fernandez@fuerzadelpueblo.do',
+      members: 352847
     },
     {
-      name: 'Ana Rodríguez',
-      position: 'Coordinadora Regional Norte',
-      region: 'Santiago, Puerto Plata, Valverde',
-      phone: '+1 (809) 555-0002',
-      email: 'ana.rodriguez@partido.com',
-      members: 456
+      name: 'Radhamés Jiménez Peña',
+      position: 'Coordinador Político',
+      region: 'Nacional',
+      phone: '+1 (809) 555-0102',
+      email: 'r.jimenez@fuerzadelpueblo.do',
+      members: 352847
     },
     {
-      name: 'Carlos Martínez',
-      position: 'Coordinador Regional Este',
-      region: 'La Romana, San Pedro, Hato Mayor',
-      phone: '+1 (809) 555-0003',
-      email: 'carlos.martinez@partido.com',
-      members: 378
+      name: 'Coordinador/a Regional',
+      position: 'Coordinador/a Regional Cibao',
+      region: 'Santiago, La Vega, Espaillat...',
+      phone: '+1 (809) 555-0200',
+      email: 'cibao@fuerzadelpueblo.do',
+      members: 75400
     },
     {
-      name: 'María González',
-      position: 'Coordinadora Regional Sur',
-      region: 'Barahona, Azua, San Juan',
-      phone: '+1 (809) 555-0004',
-      email: 'maria.gonzalez@partido.com',
-      members: 234
+      name: 'Coordinador/a Provincial',
+      position: 'Presidente Provincial S.D.',
+      region: 'Provincia Santo Domingo',
+      phone: '+1 (809) 555-0300',
+      email: 'p.santodomingo@fuerzadelpueblo.do',
+      members: 98500
     }
   ];
 
   return (
     <div className="space-y-6">
-      {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">Estructura y Organización</h1>
+          <h1 className="text-3xl font-bold text-gray-900">Estructura Organizativa</h1>
           <p className="text-gray-600 mt-1">
-            Gestiona la estructura organizacional del partido
+            Conoce y gestiona la estructura de la Fuerza del Pueblo
           </p>
         </div>
-        <Button className="bg-green-600 hover:bg-green-700">
+        <Button className="bg-primary hover:bg-primary/90">
           <Building className="h-4 w-4 mr-2" />
           Nueva Estructura
         </Button>
       </div>
 
-      {/* Organization Hierarchy */}
       <Card>
         <CardHeader>
-          <CardTitle>Jerarquía Organizacional</CardTitle>
+          <CardTitle>Jerarquía del Partido</CardTitle>
           <CardDescription>
-            Estructura del partido desde el nivel nacional hasta el sectorial
+            Estructura de la Fuerza del Pueblo desde el nivel nacional hasta los comités de base
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -133,9 +131,9 @@ export default function OrganizationPage() {
                   </div>
                 </div>
                 <div className="text-right">
-                  <div className="text-2xl font-bold text-gray-900">{level.members}</div>
+                  <div className="text-2xl font-bold text-gray-900">{level.members.toLocaleString()}</div>
                   <p className="text-sm text-gray-600">miembros</p>
-                  <p className="text-xs text-gray-500">{level.regions} unidades</p>
+                  <p className="text-xs text-gray-500">{level.regions.toLocaleString()} unidades</p>
                 </div>
               </div>
             ))}
@@ -143,12 +141,11 @@ export default function OrganizationPage() {
         </CardContent>
       </Card>
 
-      {/* Leaders Directory */}
       <Card>
         <CardHeader>
-          <CardTitle>Directorio de Líderes</CardTitle>
+          <CardTitle>Directorio de Dirigentes</CardTitle>
           <CardDescription>
-            Información de contacto de los principales líderes del partido
+            Información de contacto de los principales dirigentes del partido
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -158,16 +155,16 @@ export default function OrganizationPage() {
                 <div className="flex items-start gap-3 mb-3">
                   <div className="p-2 rounded-full bg-green-100">
                     {leader.position.includes('Presidente') ? (
-                      <Crown className="h-5 w-5 text-green-600" />
+                      <Crown className="h-5 w-5 text-primary" />
                     ) : (
-                      <User className="h-5 w-5 text-green-600" />
+                      <User className="h-5 w-5 text-primary" />
                     )}
                   </div>
                   <div className="flex-1">
                     <h3 className="font-semibold text-gray-900">{leader.name}</h3>
                     <p className="text-sm text-gray-600">{leader.position}</p>
                     <Badge variant="outline" className="mt-1">
-                      {leader.members} miembros
+                      {leader.members.toLocaleString()} miembros
                     </Badge>
                   </div>
                 </div>
@@ -191,7 +188,7 @@ export default function OrganizationPage() {
                   <Button size="sm" variant="outline">
                     Contactar
                   </Button>
-                  <Button size="sm" className="bg-green-600 hover:bg-green-700">
+                  <Button size="sm" className="bg-primary hover:bg-primary/90">
                     Ver Estructura
                   </Button>
                 </div>
@@ -201,7 +198,6 @@ export default function OrganizationPage() {
         </CardContent>
       </Card>
 
-      {/* Quick Stats */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
@@ -209,7 +205,7 @@ export default function OrganizationPage() {
             <Users className="h-4 w-4 text-blue-600" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">2,847</div>
+            <div className="text-2xl font-bold">352,847</div>
             <p className="text-xs text-muted-foreground">Militantes activos</p>
           </CardContent>
         </Card>
@@ -219,7 +215,7 @@ export default function OrganizationPage() {
             <Building className="h-4 w-4 text-green-600" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">645</div>
+            <div className="text-2xl font-bold">31,500+</div>
             <p className="text-xs text-muted-foreground">Unidades organizacionales</p>
           </CardContent>
         </Card>
@@ -235,12 +231,12 @@ export default function OrganizationPage() {
         </Card>
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Líderes</CardTitle>
+            <CardTitle className="text-sm font-medium">Dirigentes</CardTitle>
             <Crown className="h-4 w-4 text-orange-600" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">156</div>
-            <p className="text-xs text-muted-foreground">Coordinadores activos</p>
+            <div className="text-2xl font-bold">500+</div>
+            <p className="text-xs text-muted-foreground">Líderes principales</p>
           </CardContent>
         </Card>
       </div>

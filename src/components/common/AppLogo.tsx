@@ -11,16 +11,16 @@ export function AppLogo({ collapsed }: { collapsed?: boolean }) {
       <Image
         src={settings.partyLogo}
         alt={`${settings.partyName} Logo`}
-        width={56}
-        height={56}
+        width={36}
+        height={36}
         className="object-contain"
       />
       {!collapsed && (
         <span 
           className="font-headline text-xl font-bold"
-          style={{ color: settings.primaryColor }}
+          style={{ color: 'hsl(var(--primary))' }} // Usar variable CSS
         >
-          {settings.partyName} Conecta
+          {settings.partyName}
         </span>
       )}
     </div>

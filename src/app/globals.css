@@ -9,84 +9,81 @@ body {
 
 @layer base {
   :root {
-    /* Paleta personalizable del partido político */
-    --background: 220 20% 97%; /* Gris muy claro, casi blanco */
-    --foreground: 215 50% 25%; /* Azul oscuro del logo para texto general */
+    /* Paleta de colores de Fuerza del Pueblo (FP) */
+    --background: 149 20% 97%; /* Un fondo muy claro, casi blanco con un toque de verde */
+    --foreground: 149 50% 15%; /* Verde muy oscuro para texto general */
     
     --card: 0 0% 100%; /* Blanco para cards */
-    --card-foreground: 215 50% 25%; /* Azul oscuro del logo para texto en cards */
+    --card-foreground: 149 50% 15%;
     
     --popover: 0 0% 100%;
-    --popover-foreground: 215 50% 25%;
+    --popover-foreground: 149 50% 15%;
     
-    --primary: 212 85% 45%; /* Azul principal del logo (similar al de "PAÍS POSIBLE") */
+    --primary: 149 100% 33%; /* Verde principal del logo de FP */
     --primary-foreground: 0 0% 100%; /* Blanco para texto sobre primario */
-    --primary-darker: 212 70% 35%; /* Un azul más oscuro para pestañas inactivas, etc. */
     
-    --secondary: 100 60% 45%; /* Verde del logo */
-    --secondary-foreground: 0 0% 100%; /* Blanco sobre verde */
+    --secondary: 149 60% 45%; /* Un verde secundario, ligeramente más claro */
+    --secondary-foreground: 0 0% 100%;
     
-    --muted: 220 20% 90%; /* Gris claro para elementos muted */
-    --muted-foreground: 220 25% 55%; /* Gris medio/azul para texto muted */
+    --muted: 149 20% 90%;
+    --muted-foreground: 149 25% 55%;
     
-    --accent: 40 90% 60%; /* Amarillo/Naranja del eslogan del logo */
-    --accent-foreground: 215 50% 15%; /* Azul muy oscuro para texto sobre acento amarillo/naranja */
+    --accent: 149 50% 50%; /* Un verde más claro como color de acento */
+    --accent-foreground: 0 0% 100%;
     
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
     
-    --border: 220 20% 88%; /* Borde gris claro */
-    --input: 220 20% 94%; /* Fondo de input ligeramente off-white */
-    --ring: 212 85% 50%; /* Color de ring similar al primario */
+    --border: 149 20% 88%;
+    --input: 149 20% 94%;
+    --ring: 149 100% 33%;
     
     --chart-1: hsl(var(--primary));
     --chart-2: hsl(var(--secondary));
     --chart-3: hsl(var(--accent));
-    --chart-4: 350 70% 55%;  /* Rojo del logo */
-    --chart-5: 195 85% 50%; /* Celeste/Cyan del logo */
+    --chart-4: 350 70% 55%;
+    --chart-5: 195 85% 50%;
     --radius: 0.5rem;
 
-    /* Colores específicos para la Sidebar, usando la paleta del logo */
-    --sidebar-background: 0 0% 100%; /* Fondo blanco para la sidebar */
-    --sidebar-foreground: 215 50% 35%; /* Texto azul oscuro para ítems inactivos */
-    --sidebar-primary: hsl(var(--secondary)); /* Verde del logo para el fondo del ítem activo */
-    --sidebar-primary-foreground: hsl(var(--secondary-foreground)); /* Texto blanco sobre el fondo verde activo */
-    --sidebar-accent: 220 20% 95%; /* Hover bg: gris muy claro */
-    --sidebar-accent-foreground: 215 50% 25%; /* Hover text: azul oscuro */
-    --sidebar-border: 220 20% 88%;
+    /* Colores de la Sidebar */
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 149 50% 25%;
+    --sidebar-primary: hsl(var(--primary));
+    --sidebar-primary-foreground: hsl(var(--primary-foreground));
+    --sidebar-accent: 149 20% 95%;
+    --sidebar-accent-foreground: 149 50% 15%;
+    --sidebar-border: 149 20% 88%;
     --sidebar-ring: hsl(var(--ring));
   }
 
   .dark {
-    /* Paleta oscura basada en el logo */
-    --background: 215 30% 12%; 
-    --foreground: 210 25% 88%; 
+    --background: 149 30% 12%; 
+    --foreground: 149 25% 88%; 
     
-    --card: 215 30% 18%; 
-    --card-foreground: 210 25% 88%;
+    --card: 149 30% 18%; 
+    --card-foreground: 149 25% 88%;
     
-    --popover: 215 30% 15%;
-    --popover-foreground: 210 25% 88%;
+    --popover: 149 30% 15%;
+    --popover-foreground: 149 25% 88%;
     
-    --primary: 212 75% 55%; /* Azul primario del logo, más brillante para dark mode */
+    --primary: 149 80% 40%;
     --primary-foreground: 0 0% 100%;
-    --primary-darker: 212 65% 45%;
 
-    --secondary: 100 50% 55%; /* Verde del logo, más brillante */
-    --secondary-foreground: 215 50% 10%; /* Texto oscuro sobre verde brillante */
+    --secondary: 149 60% 50%;
+    --secondary-foreground: 149 50% 10%;
     
-    --muted: 215 30% 25%;
-    --muted-foreground: 210 25% 70%;
+    --muted: 149 30% 25%;
+    --muted-foreground: 149 25% 70%;
     
-    --accent: 40 80% 65%; /* Amarillo/Naranja, más brillante */
-    --accent-foreground: 215 50% 10%;
+    --accent: 149 50% 60%;
+    --accent-foreground: 149 50% 10%;
     
     --destructive: 0 70% 50%;
     --destructive-foreground: 0 0% 100%;
     
-    --border: 215 30% 30%;
-    --input: 215 30% 22%;
-    --ring: 212 75% 60%;
+    --border: 149 30% 30%;
+    --input: 149 30% 22%;
+    --ring: 149 80% 45%;
 
     --chart-1: hsl(var(--primary));
     --chart-2: hsl(var(--secondary));
@@ -94,13 +91,13 @@ body {
     --chart-4: 350 60% 65%; 
     --chart-5: 195 75% 60%;
 
-    --sidebar-background: 215 30% 15%;
-    --sidebar-foreground: 210 25% 80%;
-    --sidebar-primary: hsl(var(--secondary)); 
-    --sidebar-primary-foreground: hsl(var(--secondary-foreground)); /* Debería ser oscuro aquí también */
-    --sidebar-accent: 215 30% 25%;
-    --sidebar-accent-foreground: 210 25% 90%;
-    --sidebar-border: 215 30% 28%;
+    --sidebar-background: 149 30% 15%;
+    --sidebar-foreground: 149 25% 80%;
+    --sidebar-primary: hsl(var(--primary)); 
+    --sidebar-primary-foreground: hsl(var(--primary-foreground));
+    --sidebar-accent: 149 30% 25%;
+    --sidebar-accent-foreground: 149 25% 90%;
+    --sidebar-border: 149 30% 28%;
     --sidebar-ring: hsl(var(--ring));
   }
 }

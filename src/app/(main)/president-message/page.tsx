@@ -18,67 +18,66 @@ import {
 export default function PresidentMessagePage() {
   const { userProfile } = useAuth();
   
-  // Check if user can create messages (admin or president)
   const canCreateMessages = userProfile?.role === 'admin' || userProfile?.role === 'presidente';
   
   const messages = [
     {
       id: 1,
-      title: 'Mensaje de Año Nuevo 2024: Construyendo el Partido Político',
-      description: 'Un llamado a la unidad y al trabajo conjunto para transformar la República Dominicana.',
-      date: '2024-01-01',
-      duration: '8:45',
-      views: 15420,
-      likes: 892,
-      shares: 156,
+      title: 'Mensaje a la Nación: El Futuro de la República Dominicana',
+      description: 'Un llamado a la unidad y al trabajo conjunto para transformar nuestro país.',
+      date: '2024-02-27',
+      duration: '15:30',
+      views: 250420,
+      likes: 15200,
+      shares: 3450,
       type: 'video',
       featured: true,
-      transcript: 'Queridos dominicanos y dominicanas, al inicio de este nuevo año 2024, quiero dirigirme a ustedes con un mensaje de esperanza y determinación. Nuestro Partido Político no es solo un nombre, es una promesa que estamos construyendo juntos cada día...'
+      transcript: 'Pueblo dominicano, hoy me dirijo a ustedes con la convicción de que juntos podemos construir un futuro más próspero, justo y solidario. La Fuerza del Pueblo nace de la voluntad popular, y es a ustedes a quienes nos debemos...'
     },
     {
       id: 2,
-      title: 'Reflexiones sobre el Desarrollo Rural Sostenible',
-      description: 'La visión de Carlos Mendoza sobre la transformación del sector agropecuario dominicano.',
-      date: '2024-01-15',
+      title: 'Propuesta de Reforma Educativa para el Siglo XXI',
+      description: 'La visión de Leonel Fernández para revolucionar el sistema educativo dominicano.',
+      date: '2024-02-15',
       duration: '12:30',
       views: 8340,
       likes: 523,
       shares: 98,
       type: 'video',
       featured: false,
-      transcript: 'El campo dominicano es el corazón de nuestra nación. Durante décadas hemos visto cómo nuestros agricultores han enfrentado desafíos enormes, pero también hemos sido testigos de su resilencia extraordinaria...'
+      transcript: 'La educación es el motor del desarrollo. Nuestra propuesta se centra en la calidad docente, la integración de la tecnología en el aula y un currículo adaptado a las demandas del nuevo siglo...'
     },
     {
       id: 3,
       title: 'Llamado a la Juventud: El Futuro es Ahora',
       description: 'Un mensaje directo a los jóvenes dominicanos sobre su papel en la transformación del país.',
-      date: '2024-01-08',
+      date: '2024-01-31',
       duration: '6:20',
       views: 12750,
       likes: 1045,
       shares: 234,
       type: 'audio',
       featured: true,
-      transcript: 'Jóvenes de mi país, ustedes no son el futuro de la República Dominicana, ustedes son el presente. Cada día que pasa sin que participen activamente en la construcción de nuestra democracia es un día perdido...'
+      transcript: 'Jóvenes de mi país, ustedes son la fuerza que impulsa el cambio. No son solo el futuro, son el presente vibrante de nuestra nación. En la Fuerza del Pueblo, tienen un espacio para participar, proponer y construir...'
     }
   ];
 
   const recentActivity = [
     {
       action: 'Nuevo mensaje publicado',
-      description: 'Reflexiones sobre el Desarrollo Rural Sostenible',
+      description: 'Propuesta de Reforma Educativa para el Siglo XXI',
       time: 'Hace 3 días',
-      icon: <Play className="h-4 w-4 text-blue-600" />
+      icon: <Play className="h-4 w-4 text-primary" />
     },
     {
       action: 'Comentarios respondidos',
-      description: '25 comentarios en el mensaje de Año Nuevo',
+      description: 'Más de 100 comentarios en el Mensaje a la Nación',
       time: 'Hace 1 semana',
       icon: <MessageSquare className="h-4 w-4 text-green-600" />
     },
     {
       action: 'Transmisión en vivo',
-      description: 'Sesión de preguntas y respuestas con militantes',
+      description: 'Sesión de preguntas y respuestas con la diáspora',
       time: 'Hace 2 semanas',
       icon: <Users className="h-4 w-4 text-purple-600" />
     }
@@ -86,31 +85,29 @@ export default function PresidentMessagePage() {
 
   return (
     <div className="space-y-6">
-      {/* Header */}
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-3xl font-bold text-gray-900">Mensajes del Presidente</h1>
           <p className="text-gray-600 mt-1">
-            Comunicaciones directas de Carlos Mendoza con el pueblo dominicano
+            Comunicaciones directas de Leonel Fernández con el pueblo dominicano
           </p>
         </div>
         {canCreateMessages && (
-          <Button className="bg-blue-600 hover:bg-blue-700">
+          <Button className="bg-primary hover:bg-primary/90">
             <Play className="h-4 w-4 mr-2" />
             Nuevo Mensaje
           </Button>
         )}
       </div>
 
-      {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Total Mensajes</CardTitle>
-            <Play className="h-4 w-4 text-blue-600" />
+            <Play className="h-4 w-4 text-primary" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">18</div>
+            <div className="text-2xl font-bold">25</div>
             <p className="text-xs text-muted-foreground">Este año</p>
           </CardContent>
         </Card>
@@ -120,7 +117,7 @@ export default function PresidentMessagePage() {
             <Users className="h-4 w-4 text-green-600" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">156,420</div>
+            <div className="text-2xl font-bold">1.2M</div>
             <p className="text-xs text-muted-foreground">Reproducciones totales</p>
           </CardContent>
         </Card>
@@ -130,7 +127,7 @@ export default function PresidentMessagePage() {
             <Heart className="h-4 w-4 text-red-600" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">12,460</div>
+            <div className="text-2xl font-bold">85.6K</div>
             <p className="text-xs text-muted-foreground">Likes y comentarios</p>
           </CardContent>
         </Card>
@@ -140,13 +137,12 @@ export default function PresidentMessagePage() {
             <Share2 className="h-4 w-4 text-purple-600" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">2,488</div>
+            <div className="text-2xl font-bold">12.3K</div>
             <p className="text-xs text-muted-foreground">En redes sociales</p>
           </CardContent>
         </Card>
       </div>
 
-      {/* Featured Messages */}
       <Card>
         <CardHeader>
           <CardTitle>Mensajes Destacados</CardTitle>
@@ -157,7 +153,7 @@ export default function PresidentMessagePage() {
         <CardContent>
           <div className="space-y-6">
             {messages.filter(message => message.featured).map((message) => (
-              <div key={message.id} className="p-6 border rounded-lg bg-gradient-to-r from-blue-50 to-indigo-50">
+              <div key={message.id} className="p-6 border rounded-lg bg-gradient-to-r from-green-50 to-teal-50">
                 <div className="flex items-start gap-6">
                   <div className="w-32 h-20 bg-gray-300 rounded-lg flex items-center justify-center">
                     <Play className="h-8 w-8 text-gray-600" />
@@ -188,7 +184,7 @@ export default function PresidentMessagePage() {
                       </div>
                     </div>
                     <div className="flex gap-3">
-                      <Button className="bg-blue-600 hover:bg-blue-700">
+                      <Button className="bg-primary hover:bg-primary/90">
                         <Play className="h-4 w-4 mr-2" />
                         Reproducir
                       </Button>
@@ -204,7 +200,6 @@ export default function PresidentMessagePage() {
                   </div>
                 </div>
                 
-                {/* Transcript Preview */}
                 <div className="mt-6 p-4 bg-white rounded-lg border">
                   <h4 className="font-semibold mb-2">Transcripción (fragmento)</h4>
                   <p className="text-sm text-gray-600 italic">
@@ -218,7 +213,6 @@ export default function PresidentMessagePage() {
       </Card>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {/* Recent Messages */}
         <Card>
           <CardHeader>
             <CardTitle>Mensajes Recientes</CardTitle>
@@ -256,7 +250,6 @@ export default function PresidentMessagePage() {
           </CardContent>
         </Card>
 
-        {/* Activity Feed */}
         <Card>
           <CardHeader>
             <CardTitle>Actividad Reciente</CardTitle>
@@ -283,10 +276,9 @@ export default function PresidentMessagePage() {
         </Card>
       </div>
 
-      {/* Engagement Stats */}
       <Card>
         <CardHeader>
-          <CardTitle>Estadísticas de Engagement</CardTitle>
+          <CardTitle>Estadísticas de Interacción</CardTitle>
           <CardDescription>
             Métricas de interacción con los mensajes presidenciales
           </CardDescription>
@@ -294,19 +286,19 @@ export default function PresidentMessagePage() {
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="text-center p-4 border rounded-lg">
-              <div className="text-2xl font-bold text-blue-600 mb-2">89%</div>
+              <div className="text-2xl font-bold text-primary mb-2">89%</div>
               <div className="text-sm text-gray-600">Tasa de Finalización</div>
               <p className="text-xs text-gray-500 mt-1">Promedio de videos completos</p>
             </div>
             <div className="text-center p-4 border rounded-lg">
-              <div className="text-2xl font-bold text-green-600 mb-2">4.8</div>
+              <div className="text-2xl font-bold text-green-600 mb-2">4.9</div>
               <div className="text-sm text-gray-600">Calificación Promedio</div>
               <p className="text-xs text-gray-500 mt-1">De 5 estrellas</p>
             </div>
             <div className="text-center p-4 border rounded-lg">
-              <div className="text-2xl font-bold text-purple-600 mb-2">73%</div>
+              <div className="text-2xl font-bold text-purple-600 mb-2">25%</div>
               <div className="text-sm text-gray-600">Tasa de Compartido</div>
-              <p className="text-xs text-gray-500 mt-1">Mensajes compartidos en redes</p>
+              <p className="text-xs text-gray-500 mt-1">Usuarios que comparten</p>
             </div>
           </div>
         </CardContent>
