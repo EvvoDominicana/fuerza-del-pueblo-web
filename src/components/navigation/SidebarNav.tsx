@@ -19,6 +19,7 @@ import {
   SidebarMenu,
   SidebarMenuItem,
   SidebarMenuButton,
+  useSidebar,
 } from '@/components/ui/sidebar';
 import { cn } from '@/lib/utils';
 
@@ -38,6 +39,7 @@ const navItems = [
 export function SidebarNav() {
   const pathname = usePathname();
   const { userProfile } = useAuth();
+  const { setOpenMobile } = useSidebar();
 
   // Si no hay perfil, no renderizar nada hasta que se redirija
   if (!userProfile) {
@@ -49,6 +51,10 @@ export function SidebarNav() {
   const filteredNavItems = navItems.filter(item => 
     item.roles.includes(userRole)
   );
+  
+  const handleClick = () => {
+    setOpenMobile(false);
+  };
 
   return (
     <SidebarMenu>
@@ -59,6 +65,7 @@ export function SidebarNav() {
             isActive={pathname === item.href}
             className={cn(pathname === item.href && "bg-sidebar-primary text-sidebar-primary-foreground hover:bg-sidebar-primary/90")}
             tooltip={{ children: item.label, side: "right", align: "center" }}
+            onClick={handleClick}
           >
             <Link href={item.href}>
               <item.icon />
