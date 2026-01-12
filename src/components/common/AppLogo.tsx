@@ -9,7 +9,7 @@ export function AppLogo({ collapsed }: { collapsed?: boolean }) {
   return (
     <div className="flex items-center gap-2 p-2 transition-all duration-300">
       <Image
-        src={settings.partyLogo}
+        src="/logo.png" // Ruta codificada directamente para asegurar la resolución
         alt={`${settings.partyName} Logo`}
         width={36}
         height={36}
@@ -18,7 +18,7 @@ export function AppLogo({ collapsed }: { collapsed?: boolean }) {
       {!collapsed && (
         <span 
           className="font-headline text-xl font-bold"
-          style={{ color: 'hsl(var(--primary))' }} // Usar variable CSS
+          style={{ color: 'hsl(var(--primary))' }}
         >
           {settings.partyName}
         </span>
