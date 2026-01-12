@@ -86,7 +86,7 @@ export default function LoginPage() {
             Iniciar Sesión
           </CardTitle>
           <CardDescription>
-            Bienvenido a la plataforma FP Conecta
+            Bienvenido/a a la plataforma oficial de la Fuerza del Pueblo
           </CardDescription>
         </CardHeader>
         <CardContent>
