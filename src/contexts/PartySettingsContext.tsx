@@ -16,7 +16,7 @@ export interface PartySettings {
 const DEFAULT_SETTINGS: PartySettings = {
   partyName: 'Fuerza del Pueblo',
   partySlogan: 'La Fuerza que nos une',
-  partyLogo: 'https://picsum.photos/seed/fp-logo/100/100', // Placeholder para el logo
+  partyLogo: '/logo.jpg', // Usar el logo local
   primaryColor: '#00a651', // Verde principal del logo de FP
   secondaryColor: '#008441', // Un verde más oscuro para contraste
   websiteUrl: 'https://www.fuerzadelpueblo.do',
