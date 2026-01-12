@@ -36,6 +36,7 @@ import {
   Image as ImageIcon,
   Trash2
 } from 'lucide-react';
+import { usePartySettings } from '@/contexts/PartySettingsContext';
 
 const profileData = {
   admin: {
@@ -226,7 +227,8 @@ export default function ProfilePage() {
   const [isEditOpen, setIsEditOpen] = useState(false);
   const [isImageUploadOpen, setIsImageUploadOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
-  const [profileImage, setProfileImage] = useState<string>('https://i.imgur.com/gY38P7r.png');
+  const { settings } = usePartySettings();
+  const [profileImage, setProfileImage] = useState<string>(settings.partyLogo);
   const [editData, setEditData] = useState({
     name: '',
     phone: '',
@@ -243,6 +245,11 @@ export default function ProfilePage() {
     }
     setLoading(false);
   }, []);
+
+  useEffect(() => {
+    setProfileImage(settings.partyLogo);
+  }, [settings.partyLogo]);
+
 
   const handleEditProfile = () => {
     const role = userProfile?.role || 'voluntario';
@@ -312,7 +319,7 @@ export default function ProfilePage() {
   };
 
   const handleRemoveImage = () => {
-    setProfileImage('https://i.imgur.com/gY38P7r.png');
+    setProfileImage(settings.partyLogo);
     toast({
       title: "Foto restaurada",
       description: "Se ha restaurado la foto de perfil por defecto.",
