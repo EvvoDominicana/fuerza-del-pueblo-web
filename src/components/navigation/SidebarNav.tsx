@@ -14,6 +14,9 @@ import {
   GraduationCap,
   MessageCircle,
   Settings,
+  Rocket,
+  TrendingUp,
+  PieChart as PieChartIcon
 } from 'lucide-react';
 import {
   SidebarMenu,
@@ -31,9 +34,14 @@ const navItems = [
   { href: '/events', label: 'Eventos', icon: CalendarDays, roles: ['admin', 'presidente', 'coordinador', 'voluntario'] },
   { href: '/gamification', label: 'Reconocimientos', icon: Trophy, roles: ['admin', 'presidente', 'coordinador', 'voluntario'] },
   { href: '/tasks', label: 'Tareas', icon: ListChecks, roles: ['admin', 'presidente', 'coordinador', 'voluntario'] },
+  { href: '/structure', label: 'Mi 1x10', icon: Users, roles: ['admin', 'coordinador', 'voluntario'] },
+  { href: '/structure/analytics', label: 'Inteligencia Estructura', icon: TrendingUp, roles: ['admin', 'presidente'] },
+  { href: '/surveys', label: 'Encuestas', icon: MessageCircle, roles: ['admin', 'coordinador', 'voluntario'] },
+  { href: '/surveys/analytics', label: 'Inteligencia Electoral', icon: PieChartIcon, roles: ['admin', 'presidente'] },
   { href: '/training', label: 'Capacitación', icon: GraduationCap, roles: ['admin', 'presidente', 'coordinador', 'voluntario'] },
   { href: '/president-message', label: 'Mensaje del Presidente', icon: MessageCircle, roles: ['admin', 'presidente', 'coordinador', 'voluntario'] },
   { href: '/admin-settings', label: 'Configuración', icon: Settings, roles: ['admin'] },
+  { href: '/admin/deploy', label: 'Despliegue QR', icon: Rocket, roles: ['admin', 'presidente'] },
 ];
 
 export function SidebarNav() {
@@ -48,10 +56,10 @@ export function SidebarNav() {
 
   const userRole = userProfile.role;
 
-  const filteredNavItems = navItems.filter(item => 
+  const filteredNavItems = navItems.filter(item =>
     item.roles.includes(userRole)
   );
-  
+
   const handleClick = () => {
     setOpenMobile(false);
   };

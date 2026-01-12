@@ -9,13 +9,13 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, Di
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { toast } from '@/hooks/use-toast';
-import { 
-  Edit3, 
-  MapPin, 
-  Calendar, 
-  Users, 
-  Phone, 
-  Mail, 
+import {
+  Edit3,
+  MapPin,
+  Calendar,
+  Users,
+  Phone,
+  Mail,
   Briefcase,
   GraduationCap,
   Award,
@@ -33,7 +33,8 @@ import {
   CheckSquare,
   Upload,
   X,
-  Image as ImageIcon,
+  ImageIcon,
+  MessageCircle,
   Trash2
 } from 'lucide-react';
 import { usePartySettings } from '@/contexts/PartySettingsContext';
@@ -254,7 +255,7 @@ export default function ProfilePage() {
   const handleEditProfile = () => {
     const role = userProfile?.role || 'voluntario';
     const profile = profileData[role as keyof typeof profileData] || profileData.voluntario;
-    
+
     setEditData({
       name: profile.name,
       phone: profile.phone,
@@ -350,8 +351,8 @@ export default function ProfilePage() {
                 <AvatarImage src={profileImage} alt="Foto de perfil" />
                 <AvatarFallback className="text-2xl font-bold bg-white text-gray-700">{profile.initials}</AvatarFallback>
               </Avatar>
-              <Button 
-                size="sm" 
+              <Button
+                size="sm"
                 className="absolute -bottom-2 -right-2 rounded-full p-2 bg-white text-gray-700 hover:bg-gray-100"
                 onClick={() => setIsImageUploadOpen(true)}
               >
@@ -376,11 +377,11 @@ export default function ProfilePage() {
               </div>
             </div>
           </div>
-          
+
           <Dialog open={isEditOpen} onOpenChange={setIsEditOpen}>
             <DialogTrigger asChild>
-              <Button 
-                variant="outline" 
+              <Button
+                variant="outline"
                 className="bg-white/10 border-white/20 text-white hover:bg-white/20"
                 onClick={handleEditProfile}
               >
@@ -404,7 +405,7 @@ export default function ProfilePage() {
                     <label className="text-sm font-medium">Nombre Completo</label>
                     <Input
                       value={editData.name}
-                      onChange={(e) => setEditData({...editData, name: e.target.value})}
+                      onChange={(e) => setEditData({ ...editData, name: e.target.value })}
                       className="mt-1"
                     />
                   </div>
@@ -412,7 +413,7 @@ export default function ProfilePage() {
                     <label className="text-sm font-medium">Teléfono</label>
                     <Input
                       value={editData.phone}
-                      onChange={(e) => setEditData({...editData, phone: e.target.value})}
+                      onChange={(e) => setEditData({ ...editData, phone: e.target.value })}
                       className="mt-1"
                     />
                   </div>
@@ -421,7 +422,7 @@ export default function ProfilePage() {
                   <label className="text-sm font-medium">Ubicación</label>
                   <Input
                     value={editData.location}
-                    onChange={(e) => setEditData({...editData, location: e.target.value})}
+                    onChange={(e) => setEditData({ ...editData, location: e.target.value })}
                     className="mt-1"
                   />
                 </div>
@@ -429,7 +430,7 @@ export default function ProfilePage() {
                   <label className="text-sm font-medium">Biografía</label>
                   <Textarea
                     value={editData.bio}
-                    onChange={(e) => setEditData({...editData, bio: e.target.value})}
+                    onChange={(e) => setEditData({ ...editData, bio: e.target.value })}
                     className="mt-1"
                     rows={3}
                   />
@@ -439,7 +440,7 @@ export default function ProfilePage() {
                     <label className="text-sm font-medium">Posición Actual</label>
                     <Input
                       value={editData.currentPosition}
-                      onChange={(e) => setEditData({...editData, currentPosition: e.target.value})}
+                      onChange={(e) => setEditData({ ...editData, currentPosition: e.target.value })}
                       className="mt-1"
                     />
                   </div>
@@ -447,7 +448,7 @@ export default function ProfilePage() {
                     <label className="text-sm font-medium">Departamento</label>
                     <Input
                       value={editData.department}
-                      onChange={(e) => setEditData({...editData, department: e.target.value})}
+                      onChange={(e) => setEditData({ ...editData, department: e.target.value })}
                       className="mt-1"
                     />
                   </div>
@@ -508,8 +509,8 @@ export default function ProfilePage() {
                 </div>
 
                 <div className="flex gap-2 justify-end">
-                  <Button 
-                    variant="outline" 
+                  <Button
+                    variant="outline"
                     onClick={() => {
                       setIsImageUploadOpen(false);
                       setSelectedImage(null);
@@ -518,15 +519,15 @@ export default function ProfilePage() {
                     <X className="h-4 w-4 mr-2" />
                     Cancelar
                   </Button>
-                  <Button 
-                    variant="destructive" 
+                  <Button
+                    variant="destructive"
                     onClick={handleRemoveImage}
                   >
                     <Trash2 className="h-4 w-4 mr-2" />
                     Restaurar
                   </Button>
                   {selectedImage && (
-                    <Button 
+                    <Button
                       onClick={handleSaveImage}
                       className="bg-primary hover:bg-primary/90"
                     >
@@ -713,7 +714,7 @@ export default function ProfilePage() {
                   {(stat.label.includes('Eventos') || stat.label.includes('Reportes')) && <Calendar className="h-6 w-6 text-primary" />}
                   {(stat.label.includes('Puntos') || stat.label.includes('Usuarios')) && <Star className="h-6 w-6 text-primary" />}
                   {stat.label.includes('Militantes') && <Users className="h-6 w-6 text-primary" />}
-                   {stat.label.includes('Mensajes') && <MessageCircle className="h-6 w-6 text-primary" />}
+                  {stat.label.includes('Mensajes') && <MessageCircle className="h-6 w-6 text-primary" />}
                 </div>
               </div>
             </CardContent>
@@ -763,12 +764,12 @@ export default function ProfilePage() {
             {profile.permissions.map((permission, index) => (
               <div key={index} className="flex items-center justify-between p-3 border rounded-lg hover:bg-gray-50 transition-colors">
                 <span className="text-sm font-medium">{permission.name}</span>
-                <Badge 
-                  variant="secondary" 
+                <Badge
+                  variant="secondary"
                   className={
                     permission.level === 'Completo' ? 'bg-green-100 text-green-800' :
-                    permission.level.includes('Local') ? 'bg-blue-100 text-blue-800' :
-                    'bg-yellow-100 text-yellow-800'
+                      permission.level.includes('Local') ? 'bg-blue-100 text-blue-800' :
+                        'bg-yellow-100 text-yellow-800'
                   }
                 >
                   {permission.level}

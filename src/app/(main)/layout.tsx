@@ -45,7 +45,7 @@ export default function MainAppLayout({ children }: { children: ReactNode }) {
   // Renderizar un estado de carga mientras se verifica la autenticación
   if (loading || !userProfile) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-background">
+      <div className="min-h-screen flex items-center justify-center bg-background" suppressHydrationWarning>
         <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
         <p className="ml-4 text-muted-foreground">Verificando sesión...</p>
       </div>
