@@ -15,11 +15,10 @@ jobs:
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          # El nombre del secret se ha generalizado para evitar confusiones.
-          # Asegúrate de que el secret en GitHub se llame FIREBASE_SERVICE_ACCOUNT.
+          # El secret debe llamarse FIREBASE_SERVICE_ACCOUNT en GitHub
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT }}'
           channelId: live
-          # El projectId es un identificador técnico de Firebase y no se puede cambiar desde el código.
-          projectId: ppd-conecta
+          # Este es el ID técnico de tu nuevo proyecto de Firebase
+          projectId: fuerza-del-pueblo-conecta
         env:
           FIREBASE_CLI_EXPERIMENTS: webframeworks
