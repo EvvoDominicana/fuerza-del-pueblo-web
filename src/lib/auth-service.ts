@@ -1,7 +1,8 @@
-// Servicio de autenticación dedicado al mock para demo
+// src/lib/auth-service.ts
 import { mockAuthService } from './mock-auth';
 
-// El servicio ahora solo apunta al mock para mayor estabilidad en la demo.
+// Para la demo, usamos exclusivamente el servicio de autenticación mock.
+// Esto garantiza un comportamiento predecible y evita llamadas a Firebase.
 export const authService = {
   login(email: string, password: string) {
     return mockAuthService.login(email, password);
