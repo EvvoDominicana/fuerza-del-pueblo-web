@@ -19,6 +19,6 @@ jobs:
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT }}'
           channelId: live
           # Este es el ID técnico de tu nuevo proyecto de Firebase
-          projectId: fuerza-del-pueblo-conecta
+          projectId: fuerza-del-pueblo-web
         env:
           FIREBASE_CLI_EXPERIMENTS: webframeworks
