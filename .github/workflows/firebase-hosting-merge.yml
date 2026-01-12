@@ -15,8 +15,8 @@ jobs:
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_NEXTN_E24A7 }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_PPD_CONECTA }}'
           channelId: live
-          projectId: nextn-e24a7
+          projectId: ppd-conecta
         env:
           FIREBASE_CLI_EXPERIMENTS: webframeworks
