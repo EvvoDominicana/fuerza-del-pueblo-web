@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import { usePartySettings } from '@/contexts/PartySettingsContext';
+import logo from '@/assets/logo.png'; // Importar el logo directamente
 
 export function AppLogo({ collapsed }: { collapsed?: boolean }) {
   const { settings } = usePartySettings();
@@ -9,7 +10,7 @@ export function AppLogo({ collapsed }: { collapsed?: boolean }) {
   return (
     <div className="flex items-center gap-2 p-2 transition-all duration-300">
       <Image
-        src="/logo.png" // Ruta codificada directamente para asegurar la resolución
+        src={logo} // Usar la imagen importada
         alt={`${settings.partyName} Logo`}
         width={36}
         height={36}

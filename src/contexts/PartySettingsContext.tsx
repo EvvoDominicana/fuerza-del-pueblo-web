@@ -16,7 +16,7 @@ export interface PartySettings {
 const DEFAULT_SETTINGS: PartySettings = {
   partyName: 'Fuerza del Pueblo',
   partySlogan: 'La Fuerza que nos une',
-  partyLogo: '/logo.png', // Actualizado para usar el logo local
+  partyLogo: '/logo.png', // Esta ruta ahora es manejada por la importación directa
   primaryColor: '#00a651', // Verde principal del logo de FP
   secondaryColor: '#008441', // Un verde más oscuro para contraste
   websiteUrl: 'https://www.fuerzadelpueblo.do',
