@@ -86,7 +86,7 @@ export default function LoginPage() {
             Iniciar Sesión
           </CardTitle>
           <CardDescription>
-            Accede a la plataforma FP Conecta
+            Bienvenido a la plataforma FP Conecta
           </CardDescription>
         </CardHeader>
         <CardContent>
