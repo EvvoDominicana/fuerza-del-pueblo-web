@@ -1,7 +1,7 @@
 // Mock Authentication para Demo
 const MOCK_ADMIN_USER = {
   uid: 'admin-demo-uid',
-  email: 'admin@paisposible.com',
+  email: 'admin@partido.com',
   displayName: 'Administrador General',
   role: 'admin' as const,
   createdAt: new Date(),
@@ -19,8 +19,8 @@ const MOCK_ADMIN_USER = {
 
 const MOCK_PRESIDENT_USER = {
   uid: 'presidente-demo-uid',
-  email: 'presidente@paisposible.com',
-  displayName: 'Milton Morrison',
+  email: 'presidente@partido.com',
+  displayName: 'Carlos Mendoza',
   role: 'presidente' as const,
   createdAt: new Date(),
   permissions: {
@@ -42,7 +42,7 @@ export const mockAuthService = {
     // Simular delay de red
     await new Promise(resolve => setTimeout(resolve, 1000));
     
-    if (email === 'admin@paisposible.com' && password === 'AdminTotal2024!') {
+    if (email === 'admin@partido.com' && password === 'AdminTotal2024!') {
       // Guardar en localStorage para persistencia
       if (typeof window !== 'undefined') {
         localStorage.setItem('mock-user', JSON.stringify(MOCK_ADMIN_USER));
@@ -50,7 +50,7 @@ export const mockAuthService = {
       return { user: MOCK_ADMIN_USER };
     }
     
-    if (email === 'presidente@paisposible.com' && password === 'Presidente2024!') {
+    if (email === 'presidente@partido.com' && password === 'Presidente2024!') {
       // Guardar en localStorage para persistencia
       if (typeof window !== 'undefined') {
         localStorage.setItem('mock-user', JSON.stringify(MOCK_PRESIDENT_USER));

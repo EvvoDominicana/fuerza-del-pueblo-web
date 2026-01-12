@@ -40,7 +40,7 @@ import {
 const profileData = {
   admin: {
     name: 'Administrador General',
-    email: 'admin@paisposible.com',
+    email: 'admin@partido.com',
     initials: 'AG',
     role: 'Administrador',
     roleColor: 'bg-red-100 text-red-800',
@@ -51,7 +51,7 @@ const profileData = {
     bio: 'Administrador general con más de 10 años de experiencia en gestión de organizaciones políticas y tecnología.',
     // Professional Information
     professional: {
-      currentPosition: 'Administrador General - País Posible',
+      currentPosition: 'Administrador General - Partido Político',
       department: 'Dirección Ejecutiva',
       education: [
         {
@@ -99,8 +99,8 @@ const profileData = {
     ]
   },
   presidente: {
-    name: 'Milton Morrison',
-    email: 'presidente@paisposible.com',
+    name: 'Carlos Mendoza',
+    email: 'presidente@partido.com',
     initials: 'MM',
     role: 'Presidente del Partido',
     roleColor: 'bg-gradient-to-r from-blue-500 to-purple-600 text-white',
@@ -108,10 +108,10 @@ const profileData = {
     memberSince: 'Fundador - 2020',
     structure: 'Dirección Nacional',
     phone: '+1 (809) 555-0100',
-    bio: 'Presidente fundador de País Posible. Líder visionario con amplia experiencia en política, economía y desarrollo social de la República Dominicana.',
+    bio: 'Presidente fundador del Partido Político. Líder visionario con amplia experiencia en política, economía y desarrollo social de la República Dominicana.',
     // Professional Information
     professional: {
-      currentPosition: 'Presidente - País Posible',
+      currentPosition: 'Presidente - Partido Político',
       department: 'Dirección Nacional',
       education: [
         {
@@ -171,7 +171,7 @@ const profileData = {
   },
   coordinador: {
     name: 'Ana Rodríguez',
-    email: 'coordinador@paisposible.com',
+    email: 'coordinador@partido.com',
     initials: 'AR',
     role: 'Coordinadora Regional',
     roleColor: 'bg-purple-100 text-purple-800',
@@ -182,7 +182,7 @@ const profileData = {
     bio: 'Coordinadora regional con sólida experiencia en gestión comunitaria y desarrollo de proyectos sociales.',
     // Professional Information
     professional: {
-      currentPosition: 'Coordinadora Regional Centro - País Posible',
+      currentPosition: 'Coordinadora Regional Centro - Partido Político',
       department: 'Coordinación Regional',
       education: [
         {
@@ -229,15 +229,15 @@ const profileData = {
   },
   voluntario: {
     name: 'Carlos Martínez',
-    email: 'voluntario@paisposible.com',
+    email: 'voluntario@partido.com',
     initials: 'CM',
-    role: 'Posibilista Activo',
+    role: 'Voluntario Activo',
     roleColor: 'bg-green-100 text-green-800',
     location: 'San Pedro de Macorís, República Dominicana',
     memberSince: 'Agosto 2024',
     structure: 'Base Comunitaria Sur',
     phone: '+1 (809) 555-0126',
-    bio: 'Posibilista activo comprometido con el desarrollo de su comunidad y la participación ciudadana.',
+    bio: 'Voluntario activo comprometido con el desarrollo de su comunidad y la participación ciudadana.',
     // Professional Information
     professional: {
       currentPosition: 'Ingeniero de Software - TechSolutions RD',

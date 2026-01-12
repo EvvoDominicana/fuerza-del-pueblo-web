@@ -4,8 +4,8 @@ import { Toaster } from "@/components/ui/toaster";
 import { ClientProviders } from '@/components/providers/ClientProviders';
 
 export const metadata: Metadata = {
-  title: 'País Posible Conecta',
-  description: 'Plataforma oficial del Partido País Posible',
+  title: 'Partido Político Conecta',
+  description: 'Plataforma oficial del partido político',
 };
 
 export default function RootLayout({

@@ -37,7 +37,7 @@ const roleContent = {
     title: 'Panel de Administrador',
     description: 'Control total de la plataforma y vista general del partido.',
     stats: [
-      { icon: Users, label: 'Posibilistas Activos', value: '2,847', color: 'text-blue-600' },
+      { icon: Users, label: 'Miembros Activos', value: '2,847', color: 'text-blue-600' },
       { icon: Calendar, label: 'Eventos Este Mes', value: '15', color: 'text-purple-600' },
       { icon: CheckSquare, label: 'Tareas Completadas', value: '1,234', color: 'text-green-600' },
       { icon: MessageSquare, label: 'Mensajes Enviados', value: '5,678', color: 'text-orange-600' },
@@ -67,7 +67,7 @@ const roleContent = {
     badgeColor: 'bg-purple-100 text-purple-800'
   },
   voluntario: {
-    title: 'Panel del Posibilista',
+    title: 'Panel del Miembro',
     description: 'Tu espacio para contribuir y participar activamente.',
     stats: [
       { icon: CheckSquare, label: 'Mis Tareas Asignadas', value: '5', color: 'text-green-600' },
@@ -314,7 +314,7 @@ export default function DashboardPage() {
                   <span className="text-sm font-medium text-yellow-800">¡Próximo objetivo!</span>
                 </div>
                 <p className="text-xs text-yellow-700 mt-1">
-                  Completa 2 tareas más para obtener la insignia "Posibilista Comprometido"
+                  Completa 2 tareas más para obtener la insignia "Miembro Comprometido"
                 </p>
               </div>
             </CardContent>

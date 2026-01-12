@@ -31,27 +31,27 @@ export const useAuth = () => {
 
 // Mapa de usuarios para la demo
 const demoUsers = {
-  'admin@paisposible.com': {
+  'admin@partido.com': {
     uid: 'admin-demo-uid',
-    email: 'admin@paisposible.com',
+    email: 'admin@partido.com',
     displayName: 'Administrador General',
     role: 'admin' as const,
   },
-  'presidente@paisposible.com': {
+  'presidente@partido.com': {
     uid: 'presidente-demo-uid',
-    email: 'presidente@paisposible.com',
-    displayName: 'Milton Morrison',
+    email: 'presidente@partido.com',
+    displayName: 'Carlos Mendoza',
     role: 'presidente' as const,
   },
-  'coordinador@paisposible.com': {
+  'coordinador@partido.com': {
     uid: 'coordinador-demo-uid',
-    email: 'coordinador@paisposible.com',
+    email: 'coordinador@partido.com',
     displayName: 'Ana Rodríguez',
     role: 'coordinador' as const,
   },
-  'voluntario@paisposible.com': {
+  'voluntario@partido.com': {
     uid: 'voluntario-demo-uid',
-    email: 'voluntario@paisposible.com',
+    email: 'voluntario@partido.com',
     displayName: 'Carlos Martínez',
     role: 'voluntario' as const,
   }
@@ -81,8 +81,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     await new Promise(resolve => setTimeout(resolve, 500));
     
     // Para la demo, validamos solo el admin
-    if (email === 'admin@paisposible.com' && password === 'AdminTotal2024!') {
-      const userData = { ...demoUsers['admin@paisposible.com'], createdAt: new Date() };
+    if (email === 'admin@partido.com' && password === 'AdminTotal2024!') {
+      const userData = { ...demoUsers['admin@partido.com'], createdAt: new Date() };
       localStorage.setItem('mock-user', JSON.stringify(userData));
       setUserProfile(userData);
       return;

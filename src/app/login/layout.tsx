@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Iniciar Sesión - PPD Conecta',
-  description: 'Accede a la plataforma oficial del Partido País Posible',
+  title: 'Iniciar Sesión - Partido Conecta',
+  description: 'Accede a la plataforma oficial del partido político',
 };
 
 // Este layout se asegura de que el AuthProvider envuelva solo la página de login.

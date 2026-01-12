@@ -32,7 +32,7 @@ export default function LoginPage() {
   };
 
   const handleAdminAutocomplete = () => {
-    setEmail('admin@paisposible.com');
+    setEmail('admin@partido.com');
     setPassword('AdminTotal2024!');
   };
 
@@ -42,19 +42,19 @@ export default function LoginPage() {
     const userMap = {
       admin: {
         uid: 'admin-demo-uid',
-        email: 'admin@paisposible.com',
+        email: 'admin@partido.com',
         displayName: 'Administrador General',
         role: 'admin'
       },
       presidente: {
         uid: 'presidente-demo-uid',
-        email: 'presidente@paisposible.com',
-        displayName: 'Milton Morrison',
+        email: 'presidente@partido.com',
+        displayName: 'Carlos Mendoza',
         role: 'presidente'
       },
       coordinador: {
         uid: 'coordinador-demo-uid',
-        email: 'coordinador@paisposible.com',
+        email: 'coordinador@partido.com',
         displayName: 'Ana Rodríguez',
         role: 'coordinador'
       },
@@ -125,7 +125,7 @@ export default function LoginPage() {
                 onClick={() => handleDemoAccess('voluntario')}
                 disabled={loading}
               >
-                🤝 Posibilista
+                🤝 Voluntario
               </Button>
             </div>
             <p className="text-xs text-gray-500 mt-2 text-center">

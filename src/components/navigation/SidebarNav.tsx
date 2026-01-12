@@ -13,6 +13,7 @@ import {
   ListChecks,
   GraduationCap,
   MessageCircle,
+  Settings,
 } from 'lucide-react';
 import {
   SidebarMenu,
@@ -31,6 +32,7 @@ const navItems = [
   { href: '/tasks', label: 'Tareas', icon: ListChecks, roles: ['admin', 'presidente', 'coordinador', 'voluntario'] },
   { href: '/training', label: 'Capacitación', icon: GraduationCap, roles: ['admin', 'presidente', 'coordinador', 'voluntario'] },
   { href: '/president-message', label: 'Mensaje del Presidente', icon: MessageCircle, roles: ['admin', 'presidente', 'coordinador', 'voluntario'] },
+  { href: '/admin-settings', label: 'Configuración', icon: Settings, roles: ['admin'] },
 ];
 
 export function SidebarNav() {

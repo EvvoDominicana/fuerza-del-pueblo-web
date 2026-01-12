@@ -24,7 +24,7 @@ export default function PresidentMessagePage() {
   const messages = [
     {
       id: 1,
-      title: 'Mensaje de Año Nuevo 2024: Construyendo el País Posible',
+      title: 'Mensaje de Año Nuevo 2024: Construyendo el Partido Político',
       description: 'Un llamado a la unidad y al trabajo conjunto para transformar la República Dominicana.',
       date: '2024-01-01',
       duration: '8:45',
@@ -33,12 +33,12 @@ export default function PresidentMessagePage() {
       shares: 156,
       type: 'video',
       featured: true,
-      transcript: 'Queridos dominicanos y dominicanas, al inicio de este nuevo año 2024, quiero dirigirme a ustedes con un mensaje de esperanza y determinación. País Posible no es solo un nombre, es una promesa que estamos construyendo juntos cada día...'
+      transcript: 'Queridos dominicanos y dominicanas, al inicio de este nuevo año 2024, quiero dirigirme a ustedes con un mensaje de esperanza y determinación. Nuestro Partido Político no es solo un nombre, es una promesa que estamos construyendo juntos cada día...'
     },
     {
       id: 2,
       title: 'Reflexiones sobre el Desarrollo Rural Sostenible',
-      description: 'La visión de Milton Morrison sobre la transformación del sector agropecuario dominicano.',
+      description: 'La visión de Carlos Mendoza sobre la transformación del sector agropecuario dominicano.',
       date: '2024-01-15',
       duration: '12:30',
       views: 8340,
@@ -91,7 +91,7 @@ export default function PresidentMessagePage() {
         <div>
           <h1 className="text-3xl font-bold text-gray-900">Mensajes del Presidente</h1>
           <p className="text-gray-600 mt-1">
-            Comunicaciones directas de Milton Morrison con el pueblo dominicano
+            Comunicaciones directas de Carlos Mendoza con el pueblo dominicano
           </p>
         </div>
         {canCreateMessages && (

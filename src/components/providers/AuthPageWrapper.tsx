@@ -1,7 +1,7 @@
 'use client';
 
 import { AuthProvider } from '@/contexts/AuthContext';
-import AppLayout from '@/components/layout/AppLayout';
+import { AppLayout } from '@/components/layout/AppLayout';
 import { SidebarNav } from '@/components/navigation/SidebarNav';
 
 export default function AuthPageWrapper({

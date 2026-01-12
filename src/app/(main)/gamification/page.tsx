@@ -175,11 +175,11 @@ export default function GamificationPage() {
   const leaderboard = [
     {
       rank: 1,
-      name: 'Milton Morrison',
+      name: 'Carlos Mendoza',
       points: 2450,
       level: 'Líder Supremo',
       achievements: 15,
-      avatar: 'MM'
+      avatar: 'CM'
     },
     {
       rank: 2,

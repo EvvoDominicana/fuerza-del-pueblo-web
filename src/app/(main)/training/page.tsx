@@ -46,7 +46,7 @@ export default function TrainingPage() {
     {
       id: 1,
       title: 'Fundamentos de la Militancia Política',
-      description: 'Curso básico sobre los principios y valores de País Posible, estructura organizacional y responsabilidades del militante.',
+      description: 'Curso básico sobre los principios y valores del Partido Político, estructura organizacional y responsabilidades del militante.',
       instructor: 'Dr. Carlos Méndez',
       duration: '4 horas',
       modules: 8,
@@ -114,7 +114,7 @@ export default function TrainingPage() {
     {
       id: 5,
       title: 'Voluntariado y Participación Comunitaria',
-      description: 'Aprende técnicas efectivas para participar activamente en tu comunidad como Posibilista.',
+      description: 'Aprende técnicas efectivas para participar activamente en tu comunidad como Voluntario.',
       instructor: 'Lic. Carmen Jiménez',
       duration: '3 horas',
       modules: 6,
@@ -166,7 +166,7 @@ export default function TrainingPage() {
     {
       id: 8,
       title: 'Análisis de Políticas Públicas',
-      description: 'Metodologías para el análisis y evaluación de políticas públicas desde la perspectiva de País Posible.',
+      description: 'Metodologías para el análisis y evaluación de políticas públicas desde la perspectiva del Partido Político.',
       instructor: 'Dr. Antonio García',
       duration: '10 horas',
       modules: 20,
@@ -301,8 +301,8 @@ export default function TrainingPage() {
           </h1>
           <p className="text-gray-600 mt-1">
             {isVolunteer 
-              ? 'Desarrolla tus habilidades como Posibilista Activo'
-              : 'Desarrolla tus habilidades como militante de País Posible'
+              ? 'Desarrolla tus habilidades como Voluntario Activo'
+              : 'Desarrolla tus habilidades como militante del Partido Político'
             }
           </p>
         </div>
@@ -496,7 +496,7 @@ export default function TrainingPage() {
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">1,247</div>
-              <p className="text-xs text-muted-foreground">Posibilistas en formación</p>
+              <p className="text-xs text-muted-foreground">Voluntarios en formación</p>
             </CardContent>
           </Card>
           <Card>
@@ -522,7 +522,7 @@ export default function TrainingPage() {
         </div>
       )}
 
-      {/* Stats Cards - Para Posibilistas Activos */}
+      {/* Stats Cards - Para Voluntarios Activos */}
       {isVolunteer && (
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
           <Card>
@@ -576,8 +576,8 @@ export default function TrainingPage() {
           </CardTitle>
           <CardDescription>
             {isVolunteer 
-              ? 'Tu avance como Posibilista Activo en capacitación'
-              : 'Tu avance en el programa de capacitación de País Posible'
+              ? 'Tu avance como Voluntario Activo en capacitación'
+              : 'Tu avance en el programa de capacitación del Partido Político'
             }
           </CardDescription>
         </CardHeader>
@@ -614,7 +614,7 @@ export default function TrainingPage() {
           </CardTitle>
           <CardDescription>
             {isVolunteer 
-              ? 'Cursos en los que estás inscrito como Posibilista Activo'
+              ? 'Cursos en los que estás inscrito como Voluntario Activo'
               : 'Cursos destacados para tu desarrollo como militante'
             }
           </CardDescription>
@@ -731,7 +731,7 @@ export default function TrainingPage() {
             </CardTitle>
             <CardDescription>
               {isVolunteer 
-                ? 'Cursos adicionales para tu desarrollo como Posibilista'
+                ? 'Cursos adicionales para tu desarrollo como Voluntario'
                 : 'Catálogo completo de cursos disponibles'
               }
             </CardDescription>

@@ -9,7 +9,7 @@ body {
 
 @layer base {
   :root {
-    /* Paleta basada en el logo de País Posible */
+    /* Paleta personalizable del partido político */
     --background: 220 20% 97%; /* Gris muy claro, casi blanco */
     --foreground: 215 50% 25%; /* Azul oscuro del logo para texto general */
     

@@ -28,9 +28,9 @@ export default function NewsPage() {
   const newsArticles = [
     {
       id: 1,
-      title: 'Milton Morrison Presenta Nueva Propuesta de Desarrollo Rural',
-      excerpt: 'El líder de País Posible presenta un plan integral para el desarrollo del sector agropecuario dominicano.',
-      content: 'En una conferencia de prensa realizada en Santiago, Milton Morrison detalló su propuesta para revolucionar el sector rural...',
+      title: 'Carlos Mendoza Presenta Nueva Propuesta de Desarrollo Rural',
+      excerpt: 'El líder del Partido Político presenta un plan integral para el desarrollo del sector agropecuario dominicano.',
+      content: 'En una conferencia de prensa realizada en Santiago, Carlos Mendoza detalló su propuesta para revolucionar el sector rural...',
       author: 'Equipo de Comunicaciones',
       date: '2024-01-18',
       category: 'Propuestas',
@@ -54,7 +54,7 @@ export default function NewsPage() {
     },
     {
       id: 3,
-      title: 'País Posible Lanza Campaña "Juventud con Futuro"',
+      title: 'Partido Político Lanza Campaña "Juventud con Futuro"',
       excerpt: 'Nueva iniciativa dirigida a jóvenes dominicanos para promover la participación política y el desarrollo profesional.',
       content: 'La campaña incluye becas de estudio, programas de mentoring y oportunidades de liderazgo para jóvenes...',
       author: 'Secretaría de Juventud',
@@ -68,7 +68,7 @@ export default function NewsPage() {
     {
       id: 4,
       title: 'Alianza Estratégica con Organizaciones de la Sociedad Civil',
-      excerpt: 'País Posible firma acuerdos de colaboración con importantes ONGs para fortalecer el trabajo comunitario.',
+      excerpt: 'El Partido Político firma acuerdos de colaboración con importantes ONGs para fortalecer el trabajo comunitario.',
       content: 'Los acuerdos incluyen proyectos de desarrollo sostenible, educación y fortalecimiento institucional...',
       author: 'Departamento de Alianzas',
       date: '2024-01-12',
@@ -168,7 +168,7 @@ export default function NewsPage() {
         </div>
       )}
 
-      {/* Stats simplificadas para Posibilistas Activos */}
+      {/* Stats simplificadas para Voluntarios Activos */}
       {userRole === 'voluntario' && (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <Card>

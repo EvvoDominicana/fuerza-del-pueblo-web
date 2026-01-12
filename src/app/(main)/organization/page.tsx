@@ -18,7 +18,7 @@ export default function OrganizationPage() {
     {
       level: 'Nacional',
       name: 'Comité Ejecutivo Nacional',
-      leader: 'Milton Morrison',
+      leader: 'Carlos Mendoza',
       members: 15,
       regions: 32,
       color: 'bg-purple-100 text-purple-800'
@@ -59,11 +59,11 @@ export default function OrganizationPage() {
 
   const leaders = [
     {
-      name: 'Milton Morrison',
+      name: 'Carlos Mendoza',
       position: 'Presidente Nacional',
       region: 'Nacional',
       phone: '+1 (809) 555-0001',
-      email: 'milton.morrison@paisposible.com',
+      email: 'carlos.mendoza@partido.com',
       members: 2847
     },
     {
@@ -71,7 +71,7 @@ export default function OrganizationPage() {
       position: 'Coordinadora Regional Norte',
       region: 'Santiago, Puerto Plata, Valverde',
       phone: '+1 (809) 555-0002',
-      email: 'ana.rodriguez@paisposible.com',
+      email: 'ana.rodriguez@partido.com',
       members: 456
     },
     {
@@ -79,7 +79,7 @@ export default function OrganizationPage() {
       position: 'Coordinador Regional Este',
       region: 'La Romana, San Pedro, Hato Mayor',
       phone: '+1 (809) 555-0003',
-      email: 'carlos.martinez@paisposible.com',
+      email: 'carlos.martinez@partido.com',
       members: 378
     },
     {
@@ -87,7 +87,7 @@ export default function OrganizationPage() {
       position: 'Coordinadora Regional Sur',
       region: 'Barahona, Azua, San Juan',
       phone: '+1 (809) 555-0004',
-      email: 'maria.gonzalez@paisposible.com',
+      email: 'maria.gonzalez@partido.com',
       members: 234
     }
   ];
