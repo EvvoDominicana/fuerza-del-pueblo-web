@@ -8,14 +8,20 @@ import { motion, AnimatePresence } from 'framer-motion';
 export function SplashScreen() {
     const { settings } = usePartySettings();
     const [show, setShow] = useState(true);
+    const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
+        setMounted(true);
         const timer = setTimeout(() => {
             setShow(false);
-        }, 2500); // 2.5 segundos de splash screen
+        }, 1200); // 1.2 segundos de splash screen
 
         return () => clearTimeout(timer);
     }, []);
+
+    // Evitar renderizado en el servidor para prevenir errores de hidratación
+    // causados por extensiones (bis_skin_checked) o estados de animación.
+    if (!mounted) return null;
 
     return (
         <AnimatePresence>

@@ -9,13 +9,13 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
 import { useAuth } from '@/contexts/AuthContext';
-import { 
-  Users, 
-  Calendar, 
-  CheckSquare, 
-  MessageSquare, 
-  TrendingUp, 
-  Target, 
+import {
+  Users,
+  Calendar,
+  CheckSquare,
+  MessageSquare,
+  TrendingUp,
+  Target,
   Award,
   MapPin,
   Clock,
@@ -43,6 +43,17 @@ const roleContent = {
       { icon: MessageSquare, label: 'Mensajes Enviados', value: '50,678', color: 'text-orange-600' },
     ],
     badgeColor: 'bg-red-100 text-red-800'
+  },
+  diputado: {
+    title: 'Panel Legislativo',
+    description: 'Gestión legislativa y coordinación política en SDE.',
+    stats: [
+      { icon: Users, label: 'Electores Contactados', value: '15,402', color: 'text-blue-600', trend: '+5%' },
+      { icon: FileText, label: 'Proyectos de Ley', value: '12', color: 'text-purple-600', trend: '+2' },
+      { icon: CheckSquare, label: 'Gestiones Realizadas', value: '1,234', color: 'text-green-600', trend: '+12%' },
+      { icon: MessageSquare, label: 'Interacciones', value: '5,678', color: 'text-orange-600', trend: '+8%' },
+    ],
+    badgeColor: 'bg-green-100 text-green-800'
   },
   presidente: {
     title: 'Panel Presidencial',
@@ -82,13 +93,13 @@ const roleContent = {
 export default function DashboardPage() {
   const { userProfile, loading } = useAuth();
   const { toast } = useToast();
-  
+
   const [isNewMessageOpen, setIsNewMessageOpen] = useState(false);
   const [isCreateEventOpen, setIsCreateEventOpen] = useState(false);
   const [isGenerateReportOpen, setIsGenerateReportOpen] = useState(false);
   const [isStartVotingOpen, setIsStartVotingOpen] = useState(false);
   const [isConfigOpen, setIsConfigOpen] = useState(false);
-  
+
   const [messageTitle, setMessageTitle] = useState('');
   const [messageContent, setMessageContent] = useState('');
   const [eventTitle, setEventTitle] = useState('');
@@ -108,12 +119,12 @@ export default function DashboardPage() {
       });
       return;
     }
-    
+
     toast({
       title: "¡Mensaje presidencial publicado!",
       description: `"${messageTitle}" ha sido enviado a todos los militantes`,
     });
-    
+
     setMessageTitle('');
     setMessageContent('');
     setIsNewMessageOpen(false);
@@ -128,12 +139,12 @@ export default function DashboardPage() {
       });
       return;
     }
-    
+
     toast({
       title: "¡Evento creado exitosamente!",
       description: `"${eventTitle}" programado para ${eventDate}`,
     });
-    
+
     setEventTitle('');
     setEventDate('');
     setEventLocation('');
@@ -158,12 +169,12 @@ export default function DashboardPage() {
       });
       return;
     }
-    
+
     toast({
       title: "¡Votación iniciada!",
       description: `"${votingTitle}" está ahora disponible para todos los militantes`,
     });
-    
+
     setVotingTitle('');
     setVotingOptions('');
     setIsStartVotingOpen(false);
@@ -179,7 +190,7 @@ export default function DashboardPage() {
 
   if (loading || !userProfile) {
     return (
-       <div className="flex items-center justify-center h-full">
+      <div className="flex items-center justify-center h-full">
         <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
       </div>
     );
@@ -201,7 +212,7 @@ export default function DashboardPage() {
                 {content.title}
               </CardDescription>
             </div>
-             <Badge className={`${content.badgeColor} text-sm`}>Rol: {userProfile.role}</Badge>
+            <Badge className={`${content.badgeColor} text-sm`}>Rol: {userProfile.role}</Badge>
           </div>
           <p className="text-muted-foreground mt-2">{content.description}</p>
         </CardHeader>
@@ -216,11 +227,10 @@ export default function DashboardPage() {
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">{stat.value}</div>
-              {role === 'presidente' && stat.trend && (
+              {(role === 'presidente' || role === 'diputado') && stat.trend && (
                 <p className="text-xs text-muted-foreground mt-1">
-                  <span className={`inline-flex items-center ${
-                    stat.trend.startsWith('+') ? 'text-green-600' : 'text-red-600'
-                  }`}>
+                  <span className={`inline-flex items-center ${stat.trend.startsWith('+') ? 'text-green-600' : 'text-red-600'
+                    }`}>
                     {stat.trend.startsWith('+') ? '↗' : '↘'} {stat.trend}
                   </span> vs mes anterior
                 </p>
@@ -318,7 +328,7 @@ export default function DashboardPage() {
         </>
       )}
 
-      {role === 'presidente' && (
+      {(role === 'presidente' || role === 'diputado') && (
         <>
           <Card className="shadow-lg bg-gradient-to-r from-green-50 to-teal-50">
             <CardHeader>
@@ -597,7 +607,7 @@ export default function DashboardPage() {
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
-                  <div 
+                  <div
                     className="cursor-pointer hover:bg-gray-50 p-2 rounded transition-colors"
                     onClick={() => toast({ title: "Participación en Eventos", description: "289,534 militantes participaron en eventos este mes" })}
                   >
@@ -606,11 +616,11 @@ export default function DashboardPage() {
                       <span className="text-sm text-green-600 font-bold">82%</span>
                     </div>
                     <div className="w-full bg-gray-200 rounded-full h-2">
-                      <div className="bg-green-600 h-2 rounded-full" style={{width: '82%'}}></div>
+                      <div className="bg-green-600 h-2 rounded-full" style={{ width: '82%' }}></div>
                     </div>
                   </div>
-                  
-                  <div 
+
+                  <div
                     className="cursor-pointer hover:bg-gray-50 p-2 rounded transition-colors"
                     onClick={() => toast({ title: "Cumplimiento de Tareas", description: "216,300 militantes completaron sus tareas" })}
                   >
@@ -619,11 +629,11 @@ export default function DashboardPage() {
                       <span className="text-sm text-blue-600 font-bold">61%</span>
                     </div>
                     <div className="w-full bg-gray-200 rounded-full h-2">
-                      <div className="bg-blue-600 h-2 rounded-full" style={{width: '61%'}}></div>
+                      <div className="bg-blue-600 h-2 rounded-full" style={{ width: '61%' }}></div>
                     </div>
                   </div>
-                  
-                  <div 
+
+                  <div
                     className="cursor-pointer hover:bg-gray-50 p-2 rounded transition-colors"
                     onClick={() => toast({ title: "Satisfacción Militantes", description: "95% reportan alta satisfacción (encuesta mensual)" })}
                   >
@@ -632,7 +642,7 @@ export default function DashboardPage() {
                       <span className="text-sm text-purple-600 font-bold">95%</span>
                     </div>
                     <div className="w-full bg-gray-200 rounded-full h-2">
-                      <div className="bg-purple-600 h-2 rounded-full" style={{width: '95%'}}></div>
+                      <div className="bg-purple-600 h-2 rounded-full" style={{ width: '95%' }}></div>
                     </div>
                   </div>
                 </div>
@@ -649,7 +659,7 @@ export default function DashboardPage() {
               </CardHeader>
               <CardContent>
                 <div className="space-y-3">
-                  <div 
+                  <div
                     className="flex items-center justify-between p-2 hover:bg-blue-50 rounded cursor-pointer transition-colors"
                     onClick={() => toast({ title: "Distrito Nacional", description: "98,500 militantes activos - Crecimiento: +15%" })}
                   >
@@ -659,7 +669,7 @@ export default function DashboardPage() {
                     </div>
                     <span className="text-sm font-bold">98,500 (28%)</span>
                   </div>
-                  <div 
+                  <div
                     className="flex items-center justify-between p-2 hover:bg-green-50 rounded cursor-pointer transition-colors"
                     onClick={() => toast({ title: "Santiago", description: "75,400 militantes activos - Crecimiento: +12%" })}
                   >
@@ -678,7 +688,7 @@ export default function DashboardPage() {
                     </div>
                     <span className="text-sm font-bold">41,200 (12%)</span>
                   </div>
-                  <div 
+                  <div
                     className="flex items-center justify-between p-2 hover:bg-orange-50 rounded cursor-pointer transition-colors"
                     onClick={() => toast({ title: "Otras Regiones", description: "137,747 militantes en 29 provincias más" })}
                   >
@@ -711,7 +721,7 @@ export default function DashboardPage() {
                     </div>
                     <p className="text-xs text-gray-600">Meta: 500,000 militantes</p>
                   </div>
-                  
+
                   <div className="p-3 bg-blue-50 border border-blue-200 rounded-lg">
                     <div className="flex items-center justify-between mb-1">
                       <span className="text-sm font-medium">Expansión Digital</span>
@@ -719,7 +729,7 @@ export default function DashboardPage() {
                     </div>
                     <p className="text-xs text-gray-600">Meta: 90% militantes en plataforma</p>
                   </div>
-                  
+
                   <div className="p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
                     <div className="flex items-center justify-between mb-1">
                       <span className="text-sm font-medium">Formación Política</span>
@@ -776,7 +786,7 @@ export default function DashboardPage() {
               </CardHeader>
               <CardContent>
                 <div className="space-y-3">
-                  <div 
+                  <div
                     className="p-3 bg-red-50 border border-red-200 rounded-lg cursor-pointer hover:bg-red-100"
                     onClick={() => toast({ title: "Alerta Urgente", description: "Abriendo detalles del presupuesto para revisión..." })}
                   >
@@ -788,7 +798,7 @@ export default function DashboardPage() {
                       Revisión pendiente de presupuesto
                     </p>
                   </div>
-                  <div 
+                  <div
                     className="p-3 bg-yellow-50 border border-yellow-200 rounded-lg cursor-pointer hover:bg-yellow-100"
                     onClick={() => toast({ title: "Recordatorio", description: "Reunión Dirección Política mañana 10:00 AM" })}
                   >

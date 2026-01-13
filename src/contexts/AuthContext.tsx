@@ -6,7 +6,7 @@ interface UserProfile {
   uid: string;
   email: string;
   displayName: string;
-  role: 'admin' | 'presidente' | 'coordinador' | 'voluntario';
+  role: 'admin' | 'presidente' | 'coordinador' | 'voluntario' | 'diputado';
   createdAt: Date;
 }
 
@@ -53,6 +53,12 @@ const demoUsers = {
     email: 'militante@fuerzadelpueblo.do',
     displayName: 'Militante FP',
     role: 'voluntario' as const,
+  },
+  'carlos.gil@fuerzadelpueblo.do': {
+    uid: 'diputado-carlos-gil-uid',
+    email: 'carlos.gil@fuerzadelpueblo.do',
+    displayName: 'Dip. Carlos José Gil',
+    role: 'diputado' as const,
   }
 };
 
@@ -64,7 +70,12 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     try {
       const storedUser = localStorage.getItem('mock-user');
       if (storedUser) {
-        setUserProfile(JSON.parse(storedUser));
+        const parsedUser = JSON.parse(storedUser);
+        if (parsedUser.email === 'admin@fuerzadelpueblo.do') {
+          parsedUser.displayName = 'Dip. Carlos José Gil';
+          parsedUser.role = 'admin'; // Keep role as admin but changing name
+        }
+        setUserProfile(parsedUser);
       }
     } catch (error) {
       console.error("Error al leer de localStorage:", error);
@@ -76,9 +87,18 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const login = async (email: string, password: string): Promise<void> => {
     await new Promise(resolve => setTimeout(resolve, 500));
-    
-    if (email === 'admin@fuerzadelpueblo.do' && password === 'AdminFp2024!') {
-      const userData = { ...demoUsers['admin@fuerzadelpueblo.do'], createdAt: new Date() };
+
+    // Credenciales para pruebas
+    const validPasswords: Record<string, string> = {
+      'admin@fuerzadelpueblo.do': 'AdminFp2024!',
+      'carlos.gil@fuerzadelpueblo.do': 'DiputadoFp2026!',
+      'leonel.fernandez@fuerzadelpueblo.do': 'Leonel2024!',
+      'coordinador@fuerzadelpueblo.do': 'Coordinador2024!',
+      'militante@fuerzadelpueblo.do': 'Militante2024!',
+    };
+
+    if (demoUsers[email as keyof typeof demoUsers] && validPasswords[email] === password) {
+      const userData = { ...demoUsers[email as keyof typeof demoUsers], createdAt: new Date() };
       localStorage.setItem('mock-user', JSON.stringify(userData));
       setUserProfile(userData);
       return;
@@ -94,7 +114,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   const isAdmin = (): boolean => {
-    return userProfile?.role === 'admin';
+    return userProfile?.role === 'admin' || userProfile?.role === 'diputado';
   };
 
   const value = {

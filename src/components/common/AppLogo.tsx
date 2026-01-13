@@ -7,7 +7,7 @@ export function AppLogo({ collapsed }: { collapsed?: boolean }) {
   const { settings } = usePartySettings();
 
   return (
-    <div className="flex items-center gap-3 p-2 transition-all duration-300">
+    <div className="flex items-center gap-3 p-2 transition-all duration-300" suppressHydrationWarning>
       <div className="relative flex items-center justify-center bg-white rounded-full p-1 shadow-sm border border-sidebar-border/50">
         <Image
           src={settings.partyLogo}

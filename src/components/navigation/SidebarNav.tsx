@@ -17,6 +17,7 @@ import {
   Rocket,
   TrendingUp,
   BookOpen,
+  Flower,
   PieChart as PieChartIcon
 } from 'lucide-react';
 import {
@@ -28,22 +29,23 @@ import {
 import { cn } from '@/lib/utils';
 
 const navItems = [
-  { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard, roles: ['admin', 'presidente', 'coordinador', 'voluntario'] },
-  { href: '/profile', label: 'Mi Perfil', icon: UserCircle2, roles: ['admin', 'presidente', 'coordinador', 'voluntario'] },
-  { href: '/organization', label: 'Organización', icon: Users, roles: ['admin', 'presidente'] },
-  { href: '/news', label: 'Noticias', icon: Newspaper, roles: ['admin', 'presidente', 'coordinador', 'voluntario'] },
-  { href: '/events', label: 'Eventos', icon: CalendarDays, roles: ['admin', 'presidente', 'coordinador', 'voluntario'] },
-  { href: '/gamification', label: 'Reconocimientos', icon: Trophy, roles: ['admin', 'presidente', 'coordinador', 'voluntario'] },
-  { href: '/tasks', label: 'Tareas', icon: ListChecks, roles: ['admin', 'presidente', 'coordinador', 'voluntario'] },
-  { href: '/proposals', label: 'Argumentario 2028', icon: BookOpen, roles: ['admin', 'presidente', 'coordinador', 'voluntario'] },
-  { href: '/structure', label: 'Mi 1x10', icon: Users, roles: ['admin', 'coordinador', 'voluntario'] },
-  { href: '/structure/analytics', label: 'Inteligencia Estructura', icon: TrendingUp, roles: ['admin', 'presidente'] },
-  { href: '/surveys', label: 'Encuestas', icon: MessageCircle, roles: ['admin', 'coordinador', 'voluntario'] },
-  { href: '/surveys/analytics', label: 'Inteligencia Electoral', icon: PieChartIcon, roles: ['admin', 'presidente'] },
-  { href: '/training', label: 'Capacitación', icon: GraduationCap, roles: ['admin', 'presidente', 'coordinador', 'voluntario'] },
-  { href: '/president-message', label: 'Mensaje del Presidente', icon: MessageCircle, roles: ['admin', 'presidente', 'coordinador', 'voluntario'] },
-  { href: '/admin-settings', label: 'Configuración', icon: Settings, roles: ['admin'] },
-  { href: '/admin/deploy', label: 'Despliegue QR', icon: Rocket, roles: ['admin', 'presidente'] },
+  { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard, roles: ['admin', 'presidente', 'coordinador', 'voluntario', 'diputado'] },
+  { href: '/profile', label: 'Mi Perfil', icon: UserCircle2, roles: ['admin', 'presidente', 'coordinador', 'voluntario', 'diputado'] },
+  { href: '/organization', label: 'Organización', icon: Users, roles: ['admin', 'presidente', 'diputado'] },
+  { href: '/news', label: 'Noticias', icon: Newspaper, roles: ['admin', 'presidente', 'coordinador', 'voluntario', 'diputado'] },
+  { href: '/events', label: 'Eventos', icon: CalendarDays, roles: ['admin', 'presidente', 'coordinador', 'voluntario', 'diputado'] },
+  { href: '/gamification', label: 'Reconocimientos', icon: Trophy, roles: ['admin', 'presidente', 'coordinador', 'voluntario', 'diputado'] },
+  { href: '/tasks', label: 'Tareas', icon: ListChecks, roles: ['admin', 'presidente', 'coordinador', 'voluntario', 'diputado'] },
+  { href: '/proposals', label: 'Argumentario 2028', icon: BookOpen, roles: ['admin', 'presidente', 'coordinador', 'voluntario', 'diputado'] },
+  { href: '/identity', label: 'Mística FP', icon: Flower, roles: ['admin', 'presidente', 'coordinador', 'voluntario', 'diputado'] },
+  { href: '/structure', label: 'Mi 1x10', icon: Users, roles: ['admin', 'coordinador', 'voluntario', 'diputado'] },
+  { href: '/structure/analytics', label: 'Inteligencia Estructura', icon: TrendingUp, roles: ['admin', 'presidente', 'diputado'] },
+  { href: '/surveys', label: 'Encuestas', icon: MessageCircle, roles: ['admin', 'coordinador', 'voluntario', 'diputado'] },
+  { href: '/surveys/analytics', label: 'Inteligencia Electoral', icon: PieChartIcon, roles: ['admin', 'presidente', 'diputado'] },
+  { href: '/training', label: 'Capacitación', icon: GraduationCap, roles: ['admin', 'presidente', 'coordinador', 'voluntario', 'diputado'] },
+  { href: '/president-message', label: 'Mensaje del Presidente', icon: MessageCircle, roles: ['admin', 'presidente', 'coordinador', 'voluntario', 'diputado'] },
+  { href: '/admin-settings', label: 'Configuración', icon: Settings, roles: ['admin', 'diputado'] },
+  { href: '/admin/deploy', label: 'Despliegue QR', icon: Rocket, roles: ['admin', 'presidente', 'diputado'] },
 ];
 
 export function SidebarNav() {

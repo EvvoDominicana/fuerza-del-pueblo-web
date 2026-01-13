@@ -34,19 +34,25 @@ function CustomSidebarHeader() {
 export default function MainAppLayout({ children }: { children: ReactNode }) {
   const router = useRouter();
   const { userProfile, loading, logout } = useAuth();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     // Si no está cargando y no hay perfil de usuario, redirigir a login
-    if (!loading && !userProfile) {
+    if (mounted && !loading && !userProfile) {
       router.push('/login');
     }
-  }, [userProfile, loading, router]);
+  }, [userProfile, loading, router, mounted]);
 
   // Renderizar un estado de carga mientras se verifica la autenticación
-  if (loading || !userProfile) {
+  // O mientras no se ha montado en el cliente para evitar hidratación incorrecta
+  if (!mounted || loading || !userProfile) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-background" suppressHydrationWarning>
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary" suppressHydrationWarning></div>
         <p className="ml-4 text-muted-foreground">Verificando sesión...</p>
       </div>
     );

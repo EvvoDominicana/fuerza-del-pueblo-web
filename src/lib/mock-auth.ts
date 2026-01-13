@@ -37,11 +37,29 @@ const MOCK_PRESIDENT_USER = {
   }
 };
 
+const MOCK_DEPUTY_USER = {
+  uid: 'diputado-carlos-gil-uid',
+  email: 'carlos.gil@fuerzadelpueblo.do',
+  displayName: 'Dip. Carlos José Gil',
+  role: 'diputado' as const,
+  createdAt: new Date(),
+  permissions: {
+    all: true,
+    manageUsers: true,
+    manageTasks: true,
+    manageEvents: true,
+    manageNews: true,
+    manageTraining: true,
+    manageOrganization: true,
+    viewAnalytics: true
+  }
+};
+
 export const mockAuthService = {
   async login(email: string, password: string) {
     // Simular delay de red
     await new Promise(resolve => setTimeout(resolve, 1000));
-    
+
     if (email === 'admin@fuerzadelpueblo.do' && password === 'AdminTotal2024!') {
       // Guardar en localStorage para persistencia
       if (typeof window !== 'undefined') {
@@ -49,7 +67,7 @@ export const mockAuthService = {
       }
       return { user: MOCK_ADMIN_USER };
     }
-    
+
     if (email === 'presidente@fuerzadelpueblo.do' && password === 'Presidente2024!') {
       // Guardar en localStorage para persistencia
       if (typeof window !== 'undefined') {
@@ -57,7 +75,14 @@ export const mockAuthService = {
       }
       return { user: MOCK_PRESIDENT_USER };
     }
-    
+
+    if (email === 'carlos.gil@fuerzadelpueblo.do' && password === 'DiputadoFp2026!') {
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('mock-user', JSON.stringify(MOCK_DEPUTY_USER));
+      }
+      return { user: MOCK_DEPUTY_USER };
+    }
+
     throw new Error('Credenciales inválidas');
   },
 
@@ -76,19 +101,19 @@ export const mockAuthService = {
   onAuthStateChanged(callback: (user: any) => void) {
     if (typeof window === 'undefined') {
       callback(null);
-      return () => {};
+      return () => { };
     }
-    
+
     // Verificar inmediatamente
     const user = this.getCurrentUser();
     callback(user);
-    
+
     // Simular listener (para demo)
     const interval = setInterval(() => {
       const currentUser = this.getCurrentUser();
       callback(currentUser);
     }, 1000);
-    
+
     // Retornar función de cleanup
     return () => clearInterval(interval);
   }

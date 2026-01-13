@@ -41,50 +41,61 @@ import { usePartySettings } from '@/contexts/PartySettingsContext';
 
 const profileData = {
   admin: {
-    name: 'Administrador FP',
+    name: 'Dip. Carlos José Gil',
     email: 'admin@fuerzadelpueblo.do',
-    initials: 'FP',
-    role: 'Administrador',
-    roleColor: 'bg-red-100 text-red-800',
-    location: 'Santo Domingo, República Dominicana',
-    memberSince: 'Enero 2024',
-    structure: 'Estructura Nacional',
-    phone: '+1 (809) 555-0123',
-    bio: 'Administrador de la plataforma con experiencia en gestión de sistemas para organizaciones políticas.',
+    initials: 'CG',
+    role: 'Diputado SDE (Admin)',
+    roleColor: 'bg-green-600 text-white',
+    location: 'Santo Domingo Este, República Dominicana',
+    memberSince: 'Marzo 2025',
+    structure: 'Circunscripción 3, SDE',
+    phone: '+1 (829) 123-4567',
+    bio: 'Diputado por la Circunscripción 3 de Santo Domingo Este. Presidente de la Comisión Permanente de Modernización y Reformas. Empresario y líder comunitario comprometido con el desarrollo social y la innovación legislativa. Recientemente integrado a la Fuerza del Pueblo para fortalecer la visión de progreso del país.',
     professional: {
-      currentPosition: 'Administrador de Plataforma - Fuerza del Pueblo',
-      department: 'Tecnología',
+      currentPosition: 'Diputado al Congreso Nacional',
+      department: 'Cámara de Diputados',
       education: [
         {
-          degree: 'Ingeniería de Software',
-          institution: 'INTEC',
-          year: '2018',
+          degree: 'Licenciatura en Derecho',
+          institution: 'UASD',
+          year: '2005',
+          status: 'Completado'
+        },
+        {
+          degree: 'Maestría en Ciencias Políticas',
+          institution: 'UNPHU',
+          year: '2010',
           status: 'Completado'
         }
       ],
       experience: [
         {
-          position: 'Director de TI',
-          company: 'Agencia Digital',
-          period: '2020 - 2024',
-          description: 'Gestión de infraestructura tecnológica.'
+          position: 'Presidente Comisión Modernización',
+          company: 'Cámara de Diputados',
+          period: '2024 - Presente',
+          description: 'Liderando iniciativas de transformación digital y reforma legislativa.'
+        },
+        {
+          position: 'Empresario',
+          company: 'Consorcio Bancas La Dinámica',
+          period: '2000 - Presente',
+          description: 'Gestión de empresas en diversos sectores productivos.'
         }
       ],
-      skills: ['Gestión de Sistemas', 'Seguridad Informática', 'Bases de Datos', 'Next.js', 'Firebase'],
-      certifications: ['CompTIA Security+', 'AWS Certified Developer']
+      skills: ['Legislación', 'Gestión Pública', 'Liderazgo Político', 'Negociación', 'Desarrollo Comunitario'],
+      certifications: ['Gestión Parlamentaria', 'Liderazgo en Crisis']
     },
     stats: [
-      { label: 'Usuarios Gestionados', value: '2,847', period: 'Total', color: 'text-green-600' },
-      { label: 'Reportes Generados', value: '15', period: 'Este mes', color: 'text-blue-600' },
-      { label: 'Tickets Resueltos', value: '42', period: 'Este mes', color: 'text-purple-600' }
+      { label: 'Proyectos de Ley', value: '12', period: 'Este año', color: 'text-green-600' },
+      { label: 'Ayudas Gestionadas', value: '450+', period: 'Este mes', color: 'text-blue-600' },
+      { label: 'Visitas Comunitarias', value: '85', period: 'Total', color: 'text-purple-600' }
     ],
     permissions: [
-      { name: 'Gestión de Usuarios', level: 'Completo' },
-      { name: 'Gestión de Contenido', level: 'Completo' },
-      { name: 'Gestión de Tareas', level: 'Completo' },
-      { name: 'Analytics Global', level: 'Completo' },
-      { name: 'Configuración de Sistema', level: 'Completo' },
-      { name: 'Moderación General', level: 'Completo' }
+      { name: 'SUPER ADMIN ACCESS', level: 'TOTAL' },
+      { name: 'Gestión Legislativa', level: 'Completo' },
+      { name: 'Recursos del Partido', level: 'Completo' },
+      { name: 'Estructura SDE', level: 'Completo' },
+      { name: 'Analytics Avanzado', level: 'Completo' }
     ]
   },
   presidente: {
@@ -218,6 +229,64 @@ const profileData = {
       { name: 'Ver Tareas', level: 'Asignadas' },
       { name: 'Inscribirse a Eventos', level: 'Abiertos' },
       { name: 'Acceder a Capacitación', level: 'Básica' }
+    ]
+  },
+  diputado: {
+    name: 'Dip. Carlos José Gil',
+    email: 'carlos.gil@fuerzadelpueblo.do',
+    initials: 'CG',
+    role: 'Diputado SDE',
+    roleColor: 'bg-green-600 text-white',
+    location: 'Santo Domingo Este, República Dominicana',
+    memberSince: 'Febrero 2025',
+    structure: 'Circunscripción 3, SDE',
+    phone: '+1 (829) 123-4567',
+    bio: 'Diputado por la Circunscripción 3 de Santo Domingo Este. Presidente de la Comisión Permanente de Modernización y Reformas. Empresario y líder comunitario comprometido con el desarrollo social y la innovación legislativa. Recientemente integrado a la Fuerza del Pueblo para fortalecer la visión de progreso del país.',
+    professional: {
+      currentPosition: 'Diputado al Congreso Nacional',
+      department: 'Cámara de Diputados',
+      education: [
+        {
+          degree: 'Licenciatura en Derecho',
+          institution: 'UASD',
+          year: '2005',
+          status: 'Completado'
+        },
+        {
+          degree: 'Maestría en Ciencias Políticas',
+          institution: 'UNPHU',
+          year: '2010',
+          status: 'Completado'
+        }
+      ],
+      experience: [
+        {
+          position: 'Presidente Comisión Modernización',
+          company: 'Cámara de Diputados',
+          period: '2024 - Presente',
+          description: 'Liderando iniciativas de transformación digital y reforma legislativa.'
+        },
+        {
+          position: 'Empresario',
+          company: 'Sector Privado',
+          period: '2000 - Presente',
+          description: 'Gestión de empresas en diversos sectores productivos.'
+        }
+      ],
+      skills: ['Legislación', 'Gestión Pública', 'Liderazgo Político', 'Negociación', 'Desarrollo Comunitario'],
+      certifications: ['Gestión Parlamentaria', 'Liderazgo en Crisis']
+    },
+    stats: [
+      { label: 'Proyectos de Ley', value: '12', period: 'Este año', color: 'text-green-600' },
+      { label: 'Ayudas Gestionadas', value: '450+', period: 'Este mes', color: 'text-blue-600' },
+      { label: 'Visitas Comunitarias', value: '85', period: 'Total', color: 'text-purple-600' }
+    ],
+    permissions: [
+      { name: 'SUPER ADMIN ACCESS', level: 'TOTAL' },
+      { name: 'Gestión Legislativa', level: 'Completo' },
+      { name: 'Recursos del Partido', level: 'Completo' },
+      { name: 'Estructura SDE', level: 'Completo' },
+      { name: 'Analytics Avanzado', level: 'Completo' }
     ]
   }
 };

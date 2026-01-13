@@ -18,11 +18,18 @@ export default function NewComprometidoPage() {
     const { userProfile } = useAuth();
     const [submitting, setSubmitting] = useState(false);
 
-    const [formData, setFormData] = useState({
+    const [formData, setFormData] = useState<{
+        cedula: string;
+        nombre: string;
+        telefono: string;
+        sector: string;
+        residencia: 'local' | 'exterior';
+    }>({
         cedula: '',
         nombre: '',
         telefono: '',
-        sector: ''
+        sector: '',
+        residencia: 'local'
     });
 
     const formatCedula = (value: string) => {
@@ -84,7 +91,11 @@ export default function NewComprometidoPage() {
 
             const newComprometido: VotanteComprometido = {
                 id: uuidv4(),
-                ...formData,
+                cedula: formData.cedula,
+                nombre: formData.nombre,
+                telefono: formData.telefono,
+                sector: formData.sector,
+                residencia: formData.residencia,
                 coordinadorId: userProfile.uid,
                 syncStatus: 'pending',
                 createdAt: new Date().toISOString(),
@@ -163,10 +174,34 @@ export default function NewComprometidoPage() {
                         </div>
 
                         <div className="space-y-2">
-                            <Label htmlFor="sector">Sector / Barrio</Label>
+                            <Label>Residencia</Label>
+                            <div className="grid grid-cols-2 gap-4">
+                                <Button
+                                    type="button"
+                                    variant={formData.residencia === 'local' ? 'default' : 'outline'}
+                                    className="gap-2"
+                                    onClick={() => setFormData({ ...formData, residencia: 'local' })}
+                                >
+                                    🇩🇴 Nacional
+                                </Button>
+                                <Button
+                                    type="button"
+                                    variant={formData.residencia === 'exterior' ? 'default' : 'outline'}
+                                    className="gap-2"
+                                    onClick={() => setFormData({ ...formData, residencia: 'exterior' })}
+                                >
+                                    ✈️ Diáspora
+                                </Button>
+                            </div>
+                        </div>
+
+                        <div className="space-y-2">
+                            <Label htmlFor="sector">
+                                {formData.residencia === 'local' ? 'Sector / Barrio' : 'Ciudad / Estado Exterior'}
+                            </Label>
                             <Input
                                 id="sector"
-                                placeholder="Ej: Los Mina, Ensanche La Paz..."
+                                placeholder={formData.residencia === 'local' ? 'Ej: Los Mina, Ensanche La Paz...' : 'Ej: Bronx (NY), Madrid, Paterson...'}
                                 value={formData.sector}
                                 onChange={(e) => setFormData({ ...formData, sector: e.target.value })}
                                 required

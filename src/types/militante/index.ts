@@ -4,6 +4,7 @@ export interface VotanteComprometido {
     nombre: string;
     telefono: string;
     sector: string;
+    residencia: 'local' | 'exterior';
     coordinadorId: string; // El ID del militante que lo registró
     syncStatus: 'pending' | 'synced';
     createdAt: string;
